@@ -15,8 +15,6 @@ A template for a muted base layer about Southern California. Designed for overla
 * Places by the U.S. Census via [census.ire.org](census.ire.org)
 * Neighborhoods and regions by The Times' [Mapping LA project](http://mapping.la)
 
-![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/sfvalley.png)
-
 ## Installation
 
 The first thing to do is install [TileMill](http://mapbox.com/tilemill/), the open-source map design studio by [MapBox](http://www.mapbox.com). 
@@ -82,6 +80,8 @@ Finally, you have to configure the Tilemill configuration file to work with your
 ```bash
 $ python configure.py
 ```
+
+![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/sfvalley.png)
 
 ## Deployment
 
