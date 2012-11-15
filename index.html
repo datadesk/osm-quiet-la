@@ -61,7 +61,8 @@
             height:28px;
         }
         #byline {
-            font-size:14px;
+            font-size:16px;
+            line-height:20px;
         }
         #overlay {
             position: absolute;
@@ -101,7 +102,7 @@
             <div id="overlay-about" class="overlay-box">
                 <div id="overlay-headline" class="overlay-section">
                     <h1>Quiet L.A.</h1>
-                    <p id="byline">A muted base layer about Southern California</a></p>
+                    <p id="byline">A muted base layer about Southern California</a> by the Los Angeles Times Data Desk. <a href="http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/">Read all about it</a>.</p>
                 </div>
                 <div id="overlay-search" class="overlay-section">
                     <form id="geocoder"></form>
@@ -155,9 +156,9 @@ var v3Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-
 });
 map.addLayer(v3Layer);
 var baseLayers = {
-    "v0.2.1": v1Layer,
+    "v0.2.3": v3Layer,
     "v0.2.2": v2Layer,
-    "v0.2.3": v3Layer
+    "v0.2.1": v1Layer
 };
 L.control.layers(baseLayers, {}, {collapsed:false}).addTo(map);
 </script>
