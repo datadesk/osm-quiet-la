@@ -126,7 +126,25 @@ var mapOptions = {
 var map = new L.Map('map-canvas', mapOptions);
 map.setView(new L.LatLng(34.05, -118.6), 10);
 var attribution = "Map data (c) <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>";
-var v2Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.1/{z}/{x}/{y}.png", {
+var v1Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.1/{z}/{x}/{y}.png", {
+     attribution: attribution,
+     subdomains: [
+        'tiles1',
+        'tiles2',
+        'tiles3',
+        'tiles4'
+    ]
+});
+var v2Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.2/{z}/{x}/{y}.png", {
+     attribution: attribution,
+     subdomains: [
+        'tiles1',
+        'tiles2',
+        'tiles3',
+        'tiles4'
+    ]
+});
+var v3Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.3/{z}/{x}/{y}.png", {
      attribution: attribution,
      subdomains: [
         'tiles1',
@@ -137,7 +155,9 @@ var v2Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-
 });
 map.addLayer(v2Layer);
 var baseLayers = {
-    "v0.2.1": v2Layer
+    "v0.2.1": v1Layer,
+    "v0.2.2": v2Layer,
+    "v0.2.3": v3Layer
 };
 L.control.layers(baseLayers, {}, {collapsed:false}).addTo(map);
 </script>
