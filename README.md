@@ -7,7 +7,7 @@
 
 A template for a muted base layer about Southern California. Designed for overlaying loud data visualizations. Created with open data. Configured for [TileMill](http://mapbox.com/tilemill/) and [Mapnik](http://mapnik.org). Ready to deploy to Amazon S3 using [Fabric](https://github.com/fabric/fabric), [invar](https://github.com/onyxfish/invar) and [boto](https://github.com/boto/boto).
 
-![DTLA](http://www.github.com/datadesk/osm-quiet-la/samples/0.2.3/dtla.png)
+![DTLA](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/dtla.png)
 
 ## Layers
 
@@ -15,7 +15,7 @@ A template for a muted base layer about Southern California. Designed for overla
 * Places by the U.S. Census via [census.ire.org](census.ire.org)
 * Neighborhoods and regions by The Times' [Mapping LA project](http://mapping.la)
 
-![San Fernando Valley](http://www.github.com/datadesk/osm-quiet-la/samples/0.2.3/sfvalley.png)
+![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/sfvalley.png)
 
 ## Installation
 
@@ -143,7 +143,7 @@ Now all that's left is to upload the files in bulk using [invar](https://github.
 $ fab deploy_tiles
 ```
 
-![Southern California](http://www.github.com/datadesk/osm-quiet-la/samples/0.2.3/socal.png)
+![Southern California](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/socal.png)
 
 ## Credits
 
