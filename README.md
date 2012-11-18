@@ -5,7 +5,7 @@
   \/___/_/   \/_____/   \/_/   \/_____/     \/_/      \/_____/   \/_/\/_/ 
                                                                           </code></pre>
 
-A template for a muted base layer about Southern California. Designed for overlaying loud data visualizations. Created with open data. Configured for [TileMill](http://mapbox.com/tilemill/) and [Mapnik](http://mapnik.org). Ready to deploy to Amazon S3 using [Fabric](https://github.com/fabric/fabric), [invar](https://github.com/onyxfish/invar) and [boto](https://github.com/boto/boto).
+A template for a muted base layer about Southern California. Designed for overlaying loud data visualizations. Created with open data. Configured for [TileMill](http://mapbox.com/tilemill/) and [Mapnik](http://mapnik.org). Ready to deploy to Amazon S3 using [Fabric](https://github.com/fabric/fabric), [invar](https://github.com/onyxfish/invar) and [boto](https://github.com/boto/boto). Read more about it in [this introductory post](http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/).
 
 ![DTLA](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/dtla.png)
 
