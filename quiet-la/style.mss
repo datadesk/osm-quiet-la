@@ -8,7 +8,7 @@ Map {
   polygon-gamma:0.8;
 }
 
-#water-lines-low[zoom>=9][zoom<=12] {
+#water-lines-low[zoom>=8][zoom<=12] {
   line-color: @water;
   [zoom=9] { line-width: 0.2; }
   [zoom=10]{ line-width: 0.4; }

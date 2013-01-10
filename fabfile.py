@@ -36,22 +36,22 @@ def update_osm(state='california', postgres_user='postgres'):
     """
     Download and install the latest snapshot of the OpenStreetMap database.
     """
-    print('Updating OpenStreetMap slice for the state of %s' % state.title())
-    # Figure out what file we want
-    bz2 = '%s.osm.bz2' % state
-    # Delete it from the local folder if it already exists
-    if os.path.exists('./%s' % bz2):
-        print('- Deleting existing OpenStreetMap bz2 from this directory')
-        os.remove('./%s' % bz2)
-    # Download a new file from our data source
-    url ='http://download.geofabrik.de/openstreetmap/north-america/us/%s'
-    print('- Downloading new OpenStreetMap slice from geofabrik.de')
-    urllib.urlretrieve(url % bz2, './%s' % bz2)
-    print('- Download successful')
-    # Unzip file
-    print ('- Unzipping OpenStreetMap bz2')
-    local('bunzip2 ./%s' % bz2)
-    print ('- Unzip successful')
+#    print('Updating OpenStreetMap slice for the state of %s' % state.title())
+#    # Figure out what file we want
+#    bz2 = '%s.osm.bz2' % state
+#    # Delete it from the local folder if it already exists
+#    if os.path.exists('./%s' % bz2):
+#        print('- Deleting existing OpenStreetMap bz2 from this directory')
+#        os.remove('./%s' % bz2)
+#    # Download a new file from our data source
+#    url ='http://download.geofabrik.de/openstreetmap/north-america/us/%s'
+#    print('- Downloading new OpenStreetMap slice from geofabrik.de')
+#    urllib.urlretrieve(url % bz2, './%s' % bz2)
+#    print('- Download successful')
+#    # Unzip file
+#    print ('- Unzipping OpenStreetMap bz2')
+#    local('bunzip2 ./%s' % bz2)
+#    print ('- Unzip successful')
     # Drop the database if it already exists
     db = 'osm_%s' % state
     try:

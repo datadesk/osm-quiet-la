@@ -2,7 +2,7 @@
    ROAD & RAIL LINES
 /* ================================================================== */
 
-#roads-medium::outline[zoom>=9][zoom<=10] {
+#roads-medium::outline[zoom>=8][zoom<=10] {
   line-join: round;
   [type='motorway'],
   [type='motorway_link'] {
@@ -16,6 +16,10 @@
      line-color: transparent; 
      line-width:0;
   }
+  [zoom=8] {
+    [type='motorway'],[type='trunk'] { line-width: 1.1; }
+    [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
+  } 
   [zoom=9] {
     [type='motorway'],[type='trunk'] { line-width: 1.5; }
     [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
@@ -26,7 +30,7 @@
   } 
 }
 
-#roads-medium[zoom>=9][zoom<=10] {
+#roads-medium[zoom>=8][zoom<=10] {
   [type='motorway'],
   [type='motorway_link'] {
     line-color: @motorway_fill;
@@ -38,6 +42,11 @@
   [type='primary'] { line-color: @primary_line; }
   [type='secondary'] { line-color: @secondary_line; }
   [type='tertiary'] { line-color: @standard_line; }
+  [zoom=8] {
+    [type='motorway'],[type='trunk'] { line-width: 1.1; }
+    [type='primary'],[type='secondary'],
+    [type='motorway_link'],[type='trunk_link'] { line-width: 0.3; }
+  } 
   [zoom=9] {
     [type='motorway'],[type='trunk'] { line-width: 1.4; }
     [type='primary'],[type='secondary'],

@@ -12,12 +12,16 @@
   text-min-distance:10;
 }
 
-#counties[zoom>8][zoom<14] {
+#counties[zoom>=8][zoom<14] {
   text-name:"[NAMELSAD10]";
   text-face-name: @sans;
   text-transform: uppercase;
   text-character-spacing: 2;
   text-size:14;
+  [zoom=8] {
+    text-size:12.5;
+    text-halo-radius:1.5;
+  }
   [zoom=9] {
     text-size:13;
     text-halo-radius:1.5;
@@ -35,7 +39,9 @@
     text-size:16;
   }
   // Skip LA county since we will use regions there instead.
-  [NAMELSAD10='Los Angeles County'] {text-name:"''";}
+  [zoom>8] {
+    [NAMELSAD10='Los Angeles County'] {text-name:"''";}
+  }
 }
 
 #regions[zoom>=9][zoom<12] {
