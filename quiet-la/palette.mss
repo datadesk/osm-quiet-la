@@ -24,6 +24,7 @@ Map { font-directory: url(./fonts); }
 @commercial: @land * 0.97;
 @industrial: @land * 0.96;
 @military: @land * 0.95;
+@firestation: red;
 @parking: #EEE;
 @place_of_worship: #E3C5C9;
 @admin: #000000;
