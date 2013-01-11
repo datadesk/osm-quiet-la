@@ -32,7 +32,7 @@ def rollout():
     deploy_tiles()
 
 
-def update_osm(state='california', postgres_user='postgres'):
+def update_osm(state='california', postgres_user='postgres', host='localhost'):
     """
     Download and install the latest snapshot of the OpenStreetMap database.
     """
@@ -68,7 +68,7 @@ def update_osm(state='california', postgres_user='postgres'):
     # Load the database with osm2pgsql
     print('- Loading OpenStreetMap data')
     osm = '%s.osm' % state
-    local('osm2pgsql -U %s -d %s -S /usr/share/osm2pgsql/default.style %s' % (postgres_user, db, osm))
+    local('osm2pgsql -U %s -H %s -d %s %s' % (postgres_user, host, db, osm))
     # Remove OSM file
     print('Removing %s' % osm)
     local('rm %s' % osm)
