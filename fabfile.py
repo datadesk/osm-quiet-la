@@ -68,7 +68,7 @@ def update_osm(state='california', postgres_user='postgres', host='localhost'):
     # Load the database with osm2pgsql
     print('- Loading OpenStreetMap data')
     osm = '%s.osm' % state
-    local('osm2pgsql -U %s -H %s -d %s -S /usr/share/osm2pgsql/default.style %s' % (postgres_user, host, db, osm))
+    local('osm2pgsql -U %s -H %s -d %s %s' % (postgres_user, host, db, osm))
     # Remove OSM file
     print('Removing %s' % osm)
     local('rm %s' % osm)
