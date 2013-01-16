@@ -20,14 +20,15 @@
   text-size:14;
   [zoom=8] {
     text-size:12.5;
-    text-halo-radius:1.5;
+    text-halo-radius:1.2;
   }
   [zoom=9] {
     text-size:13;
-    text-halo-radius:1.5;
+    text-halo-radius:1.3;
   }
   [zoom=10] {
     text-size:14;
+    text-halo-radius:1.2;
   }
   [zoom=11] {
     text-size:15;
@@ -50,7 +51,7 @@
   text-wrap-width: 45;
   [zoom=9] {
     text-size:12;
-    text-halo-radius:1.5;
+    text-halo-radius:1.2;
   }
   [zoom=10] {
     text-size:13;

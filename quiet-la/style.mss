@@ -10,7 +10,7 @@ Map {
 
 #water-lines-low[zoom>=8][zoom<=12] {
   line-color: @water;
-  [zoom=9] { line-width: 0.2; }
+  [zoom>7][zoom<10] { line-width: 0.2; }
   [zoom=10]{ line-width: 0.4; }
   [zoom=11]{ line-width: 0.6; }
   [zoom=12]{ line-width: 0.8; }
@@ -47,6 +47,10 @@ Map {
     [zoom=15]{ line-width: 0.1; }
   }
 }
+
+//#county-borders[zoom=8] {
+// line-color:red; 
+//}
 
 /* LAND USE */
 #landuse {

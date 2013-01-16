@@ -17,15 +17,15 @@
      line-width:0;
   }
   [zoom=8] {
-    [type='motorway'],[type='trunk'] { line-width: 1.1; }
+    [type='motorway'],[type='trunk'] { line-width: 1.3; }
     [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
   } 
   [zoom=9] {
-    [type='motorway'],[type='trunk'] { line-width: 1.5; }
+    [type='motorway'],[type='trunk'] { line-width: 2.3; }
     [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
   } 
   [zoom=10] {
-    [type='motorway'],[type='trunk'] { line-width: 2.2; }
+    [type='motorway'],[type='trunk'] { line-width: 3; }
     [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
   } 
 }
