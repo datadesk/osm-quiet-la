@@ -6,7 +6,7 @@
   line-join: round;
   [type='motorway'],
   [type='motorway_link'] {
-    line-color: @motorway_case;
+    line-color: #fff;//@motorway_case;
   }
   [type='trunk'],
   [type='trunk_link'] {
@@ -84,10 +84,10 @@ come in as well.
   line-color: @standard_case;
   [bridge=1] { line-color: @standard_case * 0.8; }
   [type='motorway'],
-  [type='motorway_link'] {
+  /*[type='motorway_link'] {
     line-color: @motorway_case;
     [bridge=1] { line-color: @motorway_case * 0.8; }
-  }
+  }*/
   [type='trunk'],
   [type='trunk_link'] {
     line-color: @trunk_case;

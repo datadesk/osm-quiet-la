@@ -7,15 +7,15 @@ Map { font-directory: url(./fonts); }
 
 
 /* Land user and land cover */
-@background: #efebe7;
-@land:#efebe7;
-@forest: #cfd6c8;
+@background: #FDFDFD;
+@land:#FDFDFD;
+@forest: #c7e6a8;
 @grass: lighten(@forest,5%);
 @park:lighten(@forest,5%);
 @hospital:#EBCDDE;
 @school: #D9D5E3;
 @stadium: #D9CDC1;
-@beach: #ebe2cd;
+@beach: #ffeec7;
 @runway: #BFBEBD;
 @aerodrome: #D6D6D6;
 @building: darken(#e8e4e4,8);
@@ -46,25 +46,25 @@ Map { font-directory: url(./fonts); }
  *         inner fill (inline).
  */
 
-@road: gray;
+@road: #fcf7bd;
 @road_halo: #fff;
 @road_text: #757575;
 
-@motorway_line:     spin(darken(#e6e6d9,15),-10);
-@motorway_fill:     spin(darken(#e6e6d9,15),-10);
+@motorway_fill:     #f7c457;
+@motorway_line:     spin(darken(@motorway_fill,15),-10);
 @motorway_case:     lighten(#000, 5);
 
 @trunk_line:        lighten(@road, 25);
 @trunk_fill:        lighten(@trunk_line,10%);
 @trunk_case:        @trunk_line * 0.9;
 
-@primary_line:      lighten(@road,20);
-@primary_fill:      #fff;
+@primary_fill:      #fcf7bd;
+@primary_line:      spin(darken(@primary_fill,20),-10);
 @primary_case:      @primary_line * 0.9;
 
-@secondary_line:    lighten(@road,30);
-@secondary_fill:    #fff;
-@secondary_case:    @secondary_line * 0.9;
+@secondary_line:    @primary_line;
+@secondary_fill:    @primary_fill;
+@secondary_case:    @primary_case;
 
 @standard_line:     lighten(@road,40);
 @standard_fill:     #fff;
