@@ -25,7 +25,7 @@
     [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
   } 
   [zoom=10] {
-    [type='motorway'],[type='trunk'] { line-width: 3; }
+    [type='motorway'],[type='trunk'] { line-width: 2; }
     [type='motorway_link'],[type='trunk_link'] { line-width: 0; }
   } 
 }
@@ -53,9 +53,9 @@
     [type='motorway_link'],[type='trunk_link'] { line-width: 0.5; }
   } 
   [zoom=10] {
-    [type='motorway'],[type='trunk'] { line-width: 1.8; }
+    [type='motorway'],[type='trunk'] { line-width: 1.5; }
     [type='primary'],[type='secondary'],
-    [type='motorway_link'],[type='trunk_link'] { line-width: 0.7; }
+    [type='motorway_link'],[type='trunk_link'] { line-width: 0.5; }
   }
 }
 
@@ -110,7 +110,7 @@ come in as well.
   [tunnel=1] { line-dasharray: 3,3; }        
   [zoom=11] {
     [stylegroup='motorway'] { line-width: @rdz11_maj + 1.6; }
-    [stylegroup='mainroad'] { line-width: @rdz11_med + 1.6; }
+    [stylegroup='mainroad'] { line-width: @rdz11_med + .3 }
     [stylegroup='minorroad']{ line-width: @rdz11_min; }
     [stylegroup='service']  { line-width: 0; }
     [stylegroup='noauto']   { line-width: 0; }
