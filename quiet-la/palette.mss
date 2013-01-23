@@ -2,7 +2,7 @@
 Map { font-directory: url(./fonts); }
 @sans: "BentonGothic-Medium Medium", "DejaVu Sans Condensed";
 @sans_bold: "BentonGothic-BoldCond Medium", "DejaVu Sans Condensed Bold";
-@sans_light: "BentonGothicCondTab Medium", "DejaVu Sans ExtraLight";
+@sans_light: "BentonGothicCondTab Regular", "DejaVu Sans ExtraLight";
 @sans_italic: "BentonGothic-RegularItalic Medium", "DejaVu Sans Condensed Oblique";
 
 
@@ -31,7 +31,7 @@ Map { font-directory: url(./fonts); }
 
 /* Places */
 @place_halo: #fff;
-@place_text: #757575;
+@place_text: #4a4a4a;
 
 /* ================================================================== */
 /* ROAD COLORS
@@ -48,7 +48,7 @@ Map { font-directory: url(./fonts); }
 
 @road: #fcf7bd;
 @road_halo: #fff;
-@road_text: #757575;
+@road_text: #4a4a4a;
 
 @motorway_fill:     #f7c457;
 @motorway_line:     spin(darken(@motorway_fill,15),-10);
