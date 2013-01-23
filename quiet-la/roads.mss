@@ -65,7 +65,7 @@ come in as well.
 
 /* Road width variables that are used in road & bridge styles */
 @rdz11_maj: 1.6; @rdz11_med: 0.8; @rdz11_min: 0.4;
-@rdz12_maj: 2.5; @rdz12_med: 1.2; @rdz12_min: 0.8;
+@rdz12_maj: 2.5; @rdz12_med: 1.0; @rdz12_min: 0.8;
 @rdz13_maj: 3;   @rdz13_med: 1.5; @rdz13_min: 1;
 @rdz14_maj: 4;   @rdz14_med: 2.5; @rdz14_min: 1.6;
 @rdz15_maj: 6;   @rdz15_med: 4;   @rdz15_min: 2;
@@ -83,8 +83,8 @@ come in as well.
   line-join: round;
   line-color: @standard_case;
   [bridge=1] { line-color: @standard_case * 0.8; }
-  [type='motorway'],
-  /*[type='motorway_link'] {
+  /*[type='motorway'],
+  [type='motorway_link'] {
     line-color: @motorway_case;
     [bridge=1] { line-color: @motorway_case * 0.8; }
   }*/
