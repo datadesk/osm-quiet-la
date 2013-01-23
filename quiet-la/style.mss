@@ -55,6 +55,7 @@ Map {
 /* LAND USE */
 #landuse {
   [type='arena'] { polygon-fill: @stadium; }
+  [type='allotments'] { polygon-fill: @park; }
   [type='beach'] { polygon-fill: @beach; }
   [type='cemetery'] { polygon-fill: @park; }
   [type='college'] { polygon-fill: @school; }
@@ -71,9 +72,9 @@ Map {
   [type='kindergarten'] { polygon-fill: @school; }
   [type='military'] { polygon-fill: @military; }
   [type='park'] { polygon-fill: @park; }
-  [type='playground'] { polygon-fill: @park; }
   [type='parking'] { polygon-fill: @parking; }
   [type='pedestrian'] { polygon-fill: @pedestrian_fill; }
+  [type='playground'] { polygon-fill: @park; }
   [type='pitch'] { polygon-fill: @park; }
   [type='place_of_worship'] { polygon-fill: @place_of_worship; }
   [type='recreation_ground'] { polygon-fill: @park; }
