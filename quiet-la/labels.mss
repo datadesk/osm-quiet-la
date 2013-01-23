@@ -257,7 +257,7 @@
 #motorway-labels[type='motorway'][zoom>9] {
   text-face-name:@sans;
   text-name:"[name]";
-  text-fill: darken(@road_text, 20);
+  text-fill: darken(@road_text, 10);
   text-halo-fill:@motorway_fill;
 }
 
