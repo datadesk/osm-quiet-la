@@ -65,7 +65,7 @@ come in as well.
 
 /* Road width variables that are used in road & bridge styles */
 @rdz11_maj: 1.6; @rdz11_med: 0.8; @rdz11_min: 0.4;
-@rdz12_maj: 3; @rdz12_med: 0.8; @rdz12_min: 0.7;
+@rdz12_maj: 3;   @rdz12_med: 0.8; @rdz12_min: 0.7;
 @rdz13_maj: 3;   @rdz13_med: 1.5; @rdz13_min: 1;
 @rdz14_maj: 4;   @rdz14_med: 2.5; @rdz14_min: 1.6;
 @rdz15_maj: 6;   @rdz15_med: 4;   @rdz15_min: 2;
@@ -110,7 +110,7 @@ come in as well.
   [tunnel=1] { line-dasharray: 3,3; }        
   [zoom=11] {
     [stylegroup='motorway'] { line-width: @rdz11_maj + 1.6; }
-    [stylegroup='mainroad'] { line-width: @rdz11_med + .3 }
+    [stylegroup='mainroad'] { line-width: @rdz11_med + 0.3 }
     [stylegroup='minorroad']{ line-width: @rdz11_min; }
     [stylegroup='service']  { line-width: 0; }
     [stylegroup='noauto']   { line-width: 0; }
@@ -118,7 +118,7 @@ come in as well.
   }
   [zoom=12] {
     [stylegroup='motorway'] { line-width: @rdz12_maj + 2; }
-    [stylegroup='mainroad'] { line-width: @rdz12_med + 2; }
+    [stylegroup='mainroad'] { line-width: @rdz12_med + 0.5; }
     [stylegroup='minorroad']{ line-width: @rdz12_min; }
     [stylegroup='service']  { line-width: 0; }
     [stylegroup='noauto']   { line-width: 0; }
