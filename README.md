@@ -107,7 +107,7 @@ Log into your Amazon account at [aws.amazon.com](http://aws.amazon.com) and crea
 Edit the `tile_bucket` environment variable in `fabfile.py` to point to your bucket name.
 
 ```python
-env.tile_bucket = 'yourbucket1'
+env.tile_bucket = 'yourbucket'
 ```
 
 Install the Python dependencies necessary to interact with S3.
