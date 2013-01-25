@@ -2,8 +2,12 @@ from __future__ import with_statement
 import os
 import json
 import urllib
+import eventlet
+eventlet.monkey_patch()
 from fabric.api import *
 from fabric.colors import green, yellow
+from boto.s3.connection import S3Connection
+from boto.exception import S3ResponseError
 
 
 def get_version():
@@ -18,7 +22,7 @@ env.tilemill = '$TILEMILL/index.js'
 env.version = get_version()
 env.release_name = 'quiet-la-%s' % env.version
 env.tile_buckets = (
-    'tiles1.latimes.com',
+    #'tiles1.latimes.com',
     'tiles2.latimes.com',
     'tiles3.latimes.com',
     'tiles4.latimes.com',
@@ -65,7 +69,7 @@ def update_osm(state='california', postgres_user='postgres', postgres_host='loca
     print('- Downloading new OpenStreetMap slice from geofabrik.de')
     urllib.urlretrieve(url % bz2, './%s' % bz2)
     print('- Download successful')
-    # Unzip file
+    Unzip file
     print ('- Unzipping OpenStreetMap bz2')
     local('bunzip2 ./%s' % bz2)
     print ('- Unzip successful')
@@ -150,3 +154,22 @@ def deploy_tiles():
     local('rm -rf ./%(release_name)s' % env)
     print(green('Success!'))
 
+
+def clone_bucket(source_bucket, destination_bucket):
+    s3_connection = S3Connection()
+    source_bucket = s3_connection.get_bucket(source_bucket)
+    destination_bucket = s3_connection.get_bucket(destination_bucket)
+    print "- Copying from %s to %s" % (source_bucket.name, destination_bucket.name)
+    counter = 0
+
+    def _copy(key):
+        key.copy(destination_bucket.name, key.key)
+        print "Copied %s" % key.key
+        return key
+ 
+    pile = eventlet.GreenPile(30)
+    for key in source_bucket.list():
+        pile.spawn(_copy, key)
+    
+    # Wait for all greenlets to finish
+    list(pile)
