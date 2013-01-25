@@ -104,15 +104,10 @@ $ fab build_tiles
 
 Log into your Amazon account at [aws.amazon.com](http://aws.amazon.com) and create one or more S3 buckets to hold your tiles.
 
-Edit the `tile_buckets` environment variable in `fabfile.py` to point to your bucket names.
+Edit the `tile_bucket` environment variable in `fabfile.py` to point to your bucket name.
 
 ```python
-env.tile_buckets = (
-    'yourbucket1',
-    'yourbucket2',
-    'yourbucket3',
-    'yourbucket4',
-)
+env.tile_bucket = 'yourbucket1'
 ```
 
 Install the Python dependencies necessary to interact with S3.
