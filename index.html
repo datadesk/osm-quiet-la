@@ -125,50 +125,37 @@ var mapOptions = {
 };
 var map = new L.Map('map-canvas', mapOptions);
 map.setView(new L.LatLng(34.05, -118.6), 8);
-var attribution = "Map data (c) <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>";
-var v1Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.1/{z}/{x}/{y}.png", {
-     attribution: attribution,
-     subdomains: [
+
+// Set default layer options
+var layerOptions = {
+    attribution: "Map data (c) <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>",
+    subdomains: [
         'tiles1',
         'tiles2',
         'tiles3',
         'tiles4'
     ]
-});
-var v2Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.2/{z}/{x}/{y}.png", {
-     attribution: attribution,
-     subdomains: [
-        'tiles1',
-        'tiles2',
-        'tiles3',
-        'tiles4'
-    ]
-});
-var v3Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.3/{z}/{x}/{y}.png", {
-     attribution: attribution,
-     subdomains: [
-        'tiles1',
-        'tiles2',
-        'tiles3',
-        'tiles4'
-    ]
-});
-var v4Layer = new L.TileLayer("http://{s}.latimes.com.s3.amazonaws.com/quiet-la-0.2.4/{z}/{x}/{y}.png", {
-     attribution: attribution,
-     subdomains: [
-        'tiles1'//,
-        //'tiles2',
-        //'tiles3',
-        //'tiles4'
-    ]
-});
-map.addLayer(v4Layer);
+}
+
+// Create a layer based on the version you submit
+var createLayer = function(version) {
+    var url = "http://{s}.latimes.com/quiet-la-" + version + "/{z}/{x}/{y}.png";
+    return new L.TileLayer(url, layerOptions);
+}
+
+// All of our releases
+var latest = createLayer("0.2.4");
 var baseLayers = {
-    "v0.2.4": v4Layer,
-    "v0.2.3": v3Layer,
-    "v0.2.2": v2Layer,
-    "v0.2.1": v1Layer
+    "v0.2.4": latest,
+    "v0.2.3": createLayer("0.2.3"),
+    "v0.2.2": createLayer("0.2.2"),
+    "v0.2.1": createLayer("0.2.1")
 };
+
+// Put the most recent one on the map
+map.addLayer(latest);
+
+// Add the layer control
 L.control.layers(baseLayers, {}, {collapsed:false}).addTo(map);
 </script>
 <script type="text/javascript">
