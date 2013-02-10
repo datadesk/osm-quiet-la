@@ -48,9 +48,12 @@ Map {
   }
 }
 
-//#county-borders[zoom=8] {
-// line-color:red; 
-//}
+#county-borders[zoom=8] {
+ line-color:@county_border; 
+ line-cap: round;
+ line-dasharray: 2,2;
+ line-width:0.3;
+}
 
 /* LAND USE */
 #landuse {

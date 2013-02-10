@@ -5,7 +5,6 @@ Map { font-directory: url(./fonts); }
 @sans_light: "BentonGothicCondTab Medium", "DejaVu Sans ExtraLight";
 @sans_italic: "BentonGothic-RegularItalic Medium", "DejaVu Sans Condensed Oblique";
 
-
 /* Land user and land cover */
 @background: #efebe7;
 @land:#efebe7;
@@ -28,6 +27,9 @@ Map { font-directory: url(./fonts); }
 @parking: #EEE;
 @place_of_worship: #E3C5C9;
 @admin: #000000;
+
+/* Borders */
+@county_border: #8a7c7c;
 
 /* Places */
 @place_halo: #fff;
