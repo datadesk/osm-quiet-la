@@ -30,6 +30,7 @@ Map { font-directory: url(./fonts); }
 
 /* Borders */
 @county_border: #8a7c7c;
+@us_border: #6E6666;
 
 /* Places */
 @place_halo: #fff;

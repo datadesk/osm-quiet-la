@@ -48,11 +48,33 @@ Map {
   }
 }
 
-#county-borders[zoom=8] {
- line-color:@county_border; 
- line-cap: round;
- line-dasharray: 2,2;
- line-width:0.3;
+#county-borders {
+  // Should they go underneath or over the roads, lakes, etc.?
+  line-color:@county_border; 
+  line-cap: round;
+  line-dasharray: 2,5;
+  [zoom=8] {line-width:0.3;}
+  [zoom=9]  {line-width:0.4;}
+  [zoom=10] {line-width:0.5;}
+  [zoom=11] {line-width:0.6;}
+  [zoom=12] {line-width:0.7;}
+  [zoom=13] {line-width:0.8;}
+  [zoom=14] {line-width:0.9;}
+  [zoom=15] {line-width:1.0;}
+} 
+
+#us-border {
+  line-color:@us_border; 
+  line-cap: round;
+  line-width:1;
+  [zoom=8] {line-width:0.5;}
+  [zoom=9]  {line-width:0.6;}
+  [zoom=10] {line-width:0.7;}
+  [zoom=11] {line-width:0.8;}
+  [zoom=12] {line-width:0.9;}
+  [zoom=13] {line-width:1.0;}
+  [zoom=14] {line-width:1.1;}
+  [zoom=15] {line-width:1.2;}
 }
 
 /* LAND USE */
