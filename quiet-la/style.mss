@@ -63,10 +63,9 @@ Map {
   [zoom=15] {line-width:1.0;}
 } 
 
-#us-border {
-  line-color:@us_border; 
+#state-border {
+  line-color:@state_border; 
   line-cap: round;
-  line-width:1;
   [zoom=8] {line-width:0.5;}
   [zoom=9]  {line-width:0.6;}
   [zoom=10] {line-width:0.7;}
@@ -75,6 +74,19 @@ Map {
   [zoom=13] {line-width:1.0;}
   [zoom=14] {line-width:1.1;}
   [zoom=15] {line-width:1.2;}
+}
+
+#us-border {
+  line-color:@us_border; 
+  line-cap: round;
+  [zoom=8] {line-width:0.6;}
+  [zoom=9]  {line-width:0.7;}
+  [zoom=10] {line-width:0.8;}
+  [zoom=11] {line-width:0.9;}
+  [zoom=12] {line-width:1.0;}
+  [zoom=13] {line-width:1.1;}
+  [zoom=14] {line-width:1.2;}
+  [zoom=15] {line-width:1.3;}
 }
 
 /* LAND USE */
