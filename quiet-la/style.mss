@@ -63,8 +63,8 @@ Map {
   [zoom=15] {line-width:1.0;}
 } 
 
-#state-border {
-  line-color:@state_border; 
+#california-border {
+  line-color:@california_border; 
   line-cap: round;
   [zoom=8] {line-width:0.5;}
   [zoom=9]  {line-width:0.6;}
@@ -76,8 +76,8 @@ Map {
   [zoom=15] {line-width:1.2;}
 }
 
-#us-border {
-  line-color:@us_border; 
+#mexico-border {
+  line-color:@mexico_border; 
   line-cap: round;
   [zoom=8] {line-width:0.6;}
   [zoom=9]  {line-width:0.7;}
