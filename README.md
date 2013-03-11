@@ -9,7 +9,7 @@ A template for a muted base layer about Southern California. Designed for overla
 
 Read more about it in [this introductory post](http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/).
 
-![DTLA](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/dtla.png)
+![DTLA](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.5/dtla.png)
 
 ## Layers
 
@@ -83,7 +83,7 @@ Finally, you have to configure the Tilemill configuration file to work with your
 $ python configure.py
 ```
 
-![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/sfvalley.png)
+![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.5/sfvalley.png)
 
 ## Deployment
 
@@ -140,7 +140,7 @@ Now all that's left is to upload the files in bulk using [invar](https://github.
 $ fab deploy_tiles
 ```
 
-![Southern California](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.3/socal.png)
+![Southern California](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.2.5/socal.png)
 
 ## Credits
 

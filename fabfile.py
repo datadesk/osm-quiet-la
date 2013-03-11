@@ -13,7 +13,7 @@ def get_version():
     return json.load(f)['version']
 
 
-env.tilemill = '$TILEMILL/index.js'
+env.tilemill = 'nodejs $TILEMILL/index.js'
 env.name = 'quiet-la'
 env.version = get_version()
 env.release_name = '%s-%s' % (env.name, env.version)
@@ -42,13 +42,13 @@ def download_osm(state='california'):
     """
     print('Updating OpenStreetMap slice for the state of %s' % state.title())
     # Figure out what file we want
-    bz2 = '%s.osm.bz2' % state
+    bz2 = '%s-latest.osm.bz2' % state
     # Delete it from the local folder if it already exists
     if os.path.exists('./%s' % bz2):
         print('- Deleting existing OpenStreetMap bz2 from this directory')
         os.remove('./%s' % bz2)
     # Download a new file from our data source
-    url ='http://download.geofabrik.de/openstreetmap/north-america/us/%s'
+    url = 'http://download.geofabrik.de/north-america/us/%s'
     print('- Downloading new OpenStreetMap slice from geofabrik.de')
     urllib.urlretrieve(url % bz2, './%s' % bz2)
     print('- Download successful')
@@ -72,7 +72,7 @@ def load_osm(bz2,  postgres_user='postgres', postgres_host='localhost'):
     local('bunzip2 ./%s' % bz2)
     print ('- Unzip successful')
     # Drop the database if it already exists
-    state = bz2.replace(".osm.bz2", "")
+    state = bz2.replace("-latest.osm.bz2", "")
     db = 'osm_%s' % state
     try:
         local("sudo -u %s dropdb %s" % (postgres_user, db))
@@ -88,7 +88,7 @@ def load_osm(bz2,  postgres_user='postgres', postgres_host='localhost'):
     ))
     # Load the database with osm2pgsql
     print('- Loading OpenStreetMap data')
-    osm = '%s.osm' % state
+    osm = '%s-latest.osm' % state
     local('osm2pgsql -U %s -H %s -d %s %s' % (postgres_user, postgres_host, db, osm))
     # Remove OSM file
     print('Removing %s' % osm)
@@ -136,11 +136,6 @@ def build_tiles():
     local('mb-util ./%(release_name)s.mbtiles %(release_name)s' % env)
     print('- Deleting mbtiles file')
     local('rm -rf ./%(release_name)s.mbtiles' % env)
-    # Zip up the directory for deployment
-    print('- Zipping up file directory')
-    local('tar -zcvf %(release_name)s.tar.gz ./%(release_name)s/' % env)
-    print('- Deleting file directory')
-    local('rm -rf ./%(release_name)s' % env)
     print('- Deleting export log')
     local('rm *export*')
 

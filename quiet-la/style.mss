@@ -29,7 +29,7 @@ Map {
     [zoom=13]{ line-width: 0.2; }
     [zoom=14]{ line-width: 0.4; }
   }
-}
+} 
   
 #water-lines-high[zoom>=15] {
   line-color: @water;
@@ -105,7 +105,7 @@ Map {
   [type='hospital'] { polygon-fill: @hospital; }
   [type='industrial'] { polygon-fill: @industrial; }
   [type='recreation_ground'] { polygon-fill: @park; }
-  [type='kindergarten'] { polygon-fill: @school; }
+  [type='kindergarten'] { polygon-fill: lighten(@school, 5); }
   [type='military'] { polygon-fill: @military; }
   [type='park'] { polygon-fill: @park; }
   [type='playground'] { polygon-fill: @park; }
@@ -115,11 +115,11 @@ Map {
   [type='place_of_worship'] { polygon-fill: @place_of_worship; }
   [type='recreation_ground'] { polygon-fill: @park; }
   [type='residential'] { polygon-fill: @residential; }
-  [type='school'] { polygon-fill: @school; }
+  [type='school'] { polygon-fill: lighten(@school, 5); }
   [type='sports_center'] { polygon-fill: @stadium; }
   [type='swimming pool'] { polygon-fill: @water; }
   [type='stadium'] { polygon-fill: @stadium; }
-  [type='university'] { polygon-fill: @school; }
+  [type='university'] { polygon-fill: lighten(@school, 5); }
   [type='village_green'] { polygon-fill: @park; }
 }
 
