@@ -443,7 +443,7 @@
       "id": "mexico-border",
       "class": "",
       "Datasource": {
-        "file": "/home/ben/Code/datadesk/open_source/osm-quiet-la/repo/quiet-la/layers/mexico-border/mexico-border.shp"
+        "file": "./layers/mexico-border/mexico-border.shp"
       },
       "srs-name": "autodetect",
       "srs": "",
@@ -461,7 +461,7 @@
       "id": "california-border",
       "class": "",
       "Datasource": {
-        "file": "/home/ben/Code/datadesk/open_source/osm-quiet-la/repo/quiet-la/layers/california-border/california-border.shp"
+        "file": "./layers/california-border/california-border.shp"
       },
       "srs-name": "autodetect",
       "srs": "",
@@ -479,7 +479,7 @@
       "id": "county-borders",
       "class": "",
       "Datasource": {
-        "file": "/home/ben/Code/datadesk/open_source/osm-quiet-la/repo/quiet-la/layers/county-borders/tl_2010_06_county10_ diff.shp"
+        "file": "./layers/county-borders/tl_2010_06_county10_ diff.shp"
       },
       "srs-name": "autodetect",
       "srs": "",
