@@ -119,12 +119,12 @@ var mapOptions = {
     maxZoom:15,
     minZoom:8,
     maxBounds: new L.LatLngBounds(
-        new L.LatLng(35.6261, -114.071),
-        new L.LatLng(32.4867, -120.9814)
+        new L.LatLng(36.1912, -112.044),
+        new L.LatLng(31.5037, -122.3272)
     )
 };
 var map = new L.Map('map-canvas', mapOptions);
-map.setView(new L.LatLng(34.05, -118.6), 8);
+map.setView(new L.LatLng(34.05, -118.6), 9);
 
 // Set default layer options
 var layerOptions = {
@@ -144,9 +144,10 @@ var createLayer = function(version) {
 }
 
 // All of our releases
-var latest = createLayer("0.2.4");
+var latest = createLayer("0.2.5");
 var baseLayers = {
-    "v0.2.4": latest,
+    "v0.2.5": latest,
+    "v0.2.4": createLayer("0.2.4"),
     "v0.2.3": createLayer("0.2.3"),
     "v0.2.2": createLayer("0.2.2"),
     "v0.2.1": createLayer("0.2.1")
