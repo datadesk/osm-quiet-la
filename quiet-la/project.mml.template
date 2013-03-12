@@ -1,9 +1,9 @@
 {
   "bounds": [
-    -120.9814,
-    32.4867,
-    -114.071,
-    35.3578
+    -122.3272,
+    31.5037,
+    -112.044,
+    36.1912
   ],
   "center": [
     -118.2307,
@@ -12,7 +12,7 @@
   ],
   "format": "png",
   "interactivity": false,
-  "minzoom": 9,
+  "minzoom": 8,
   "maxzoom": 15,
   "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
   "Stylesheet": [
@@ -435,6 +435,60 @@
     {
       "geometry": "linestring",
       "extent": [
+        -117.12282819975132,
+        31.332176999999998,
+        -109.05022817340696,
+        32.718762999999996
+      ],
+      "id": "mexico-border",
+      "class": "",
+      "Datasource": {
+        "file": "/home/ben/Code/datadesk/open_source/osm-quiet-la/repo/quiet-la/layers/mexico-border/mexico-border.shp"
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "mexico-border"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.21162218615174,
+        32.71869822420977,
+        -114.131211,
+        42.009516999999995
+      ],
+      "id": "california-border",
+      "class": "",
+      "Datasource": {
+        "file": "/home/ben/Code/datadesk/open_source/osm-quiet-la/repo/quiet-la/layers/california-border/california-border.shp"
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "california-border"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -124.21140169638991,
+        32.618592,
+        -114.435429,
+        42.000854
+      ],
+      "id": "county-borders",
+      "class": "",
+      "Datasource": {
+        "file": "/home/ben/Code/datadesk/open_source/osm-quiet-la/repo/quiet-la/layers/county-borders/tl_2010_06_county10_ diff.shp"
+      },
+      "srs-name": "autodetect",
+      "srs": "",
+      "advanced": {},
+      "name": "county-borders"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
         -124.41539735139418,
         32.53089766483102,
         -114.13002996567504,
@@ -659,5 +713,5 @@
   "name": "Quiet LA",
   "description": "A quiet base layer for overlaying loud data about Southern California",
   "attribution": "Los Angeles Times Data Desk",
-  "version": "0.2.3"
+  "version": "0.2.5"
 }
