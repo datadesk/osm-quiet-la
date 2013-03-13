@@ -163,7 +163,7 @@ def deploy_tiles():
     Upload a release folder to the live Amazon S3 bucket.
     """
     print('Deploying tiles to Amazon S3')
-    print('- Uploading files to %s' % bucket)
+    print('- Uploading files to %s' % env.tile_bucket)
     local("ivs3 -P %s %s/%s" % (
         env.release_name,
         env.tile_bucket,
