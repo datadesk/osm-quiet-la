@@ -278,7 +278,7 @@ come in as well.
     [stylegroup='railway']  { line-width: 1.5 + 1; }
   }
   [zoom=16] {
-    [stylegroup='noauto']   { line-width: @rdz15_min / 4 + 1; }
+    [stylegroup='noauto']   { line-width: @rdz16_min / 4 + 1; }
     [stylegroup='railway']  { line-width: 1.5 + 1; }
   }
 }
@@ -300,7 +300,7 @@ come in as well.
 #turning-circle-fill {
   [zoom=14] { marker-width:@rdz14_min * 1.1; }
   [zoom=15] { marker-width:@rdz15_min * 1.1; }
-  [zoom=16] { marker-width:@rdz15_min * 1.1; }
+  [zoom=16] { marker-width:@rdz16_min * 1.1; }
 }
 
 /* ================================================================== */
@@ -318,7 +318,7 @@ come in as well.
     [zoom=13]{ line-width:5; }
     [zoom=14]{ line-width:7; }
     [zoom=15]{ line-width:11; }
-    [zoom=16]{ line-width:11; }
+    [zoom=16]{ line-width:13; }
   }
   [type='taxiway'] {
     [zoom=10]{ line-width:0.2; }
@@ -326,8 +326,8 @@ come in as well.
     [zoom=12]{ line-width:0.2; }
     [zoom=13]{ line-width:1; }
     [zoom=14]{ line-width:1.5; }
-    [zoom=15]{ line-width:2; }
-    [zoom=16]{ line-width:2; }
+    [zoom=15]{ line-width:3; }
+    [zoom=16]{ line-width:5; }
   }
 }
 

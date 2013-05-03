@@ -38,16 +38,16 @@ Map {
     line-cap: round;
     line-join: round;
     [zoom=15]{ line-width: 2; }
-    [zoom=16]{ line-width: 2.25; }
+    [zoom=16]{ line-width: 6; }
   }
   [type='stream'] {
-    [zoom=15]{ line-width: 0.6; }
-    [zoom=16]{ line-width: 0.8; }
+    [zoom=15]{ line-width: 1; }
+    [zoom=16]{ line-width: 2; }
   }
   [type='ditch'],
   [type='drain'] {
-    [zoom=15]{ line-width: 0.1; }
-    [zoom=16]{ line-width: 0.3; }
+    [zoom=15]{ line-width: 0.5; }
+    [zoom=16]{ line-width: 1; }
   }
 }
 
@@ -111,7 +111,7 @@ Map {
   [type='hospital'] { polygon-fill: @hospital; }
   [type='industrial'] { polygon-fill: @industrial; }
   [type='recreation_ground'] { polygon-fill: @park; }
-  [type='kindergarten'] { polygon-fill: lighten(@school, 5); }
+  [type='kindergarten'] { polygon-fill: @school; }
   [type='military'] { polygon-fill: @military; }
   [type='park'] { polygon-fill: @park; }
   [type='playground'] { polygon-fill: @park; }
@@ -121,11 +121,11 @@ Map {
   [type='place_of_worship'] { polygon-fill: @place_of_worship; }
   [type='recreation_ground'] { polygon-fill: @park; }
   [type='residential'] { polygon-fill: @residential; }
-  [type='school'] { polygon-fill: lighten(@school, 5); }
+  [type='school'] { polygon-fill: @school; }
   [type='sports_center'] { polygon-fill: @stadium; }
   [type='swimming pool'] { polygon-fill: @water; }
   [type='stadium'] { polygon-fill: @stadium; }
-  [type='university'] { polygon-fill: lighten(@school, 5); }
+  [type='university'] { polygon-fill: @school; }
   [type='village_green'] { polygon-fill: @park; }
 }
 

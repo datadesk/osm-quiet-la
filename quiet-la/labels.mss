@@ -259,7 +259,7 @@
     text-size:13;
   }
   [zoom=16] {
-    text-size:13;
+    text-size:15;
   }
 }
 
@@ -332,7 +332,7 @@
   }
   [zoom=16] {
     text-size:12.5;
-    text-min-distance:190;
+    text-min-distance:400;
   }
 }
 
@@ -346,6 +346,6 @@
   text-halo-radius:1;
   [zoom=16] {
     text-size:10.5;
-    text-min-distance:190;
+    text-min-distance:300;
   }
 }

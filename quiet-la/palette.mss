@@ -9,10 +9,10 @@ Map { font-directory: url(./fonts); }
 @background: #efebe7;
 @land:#efebe7;
 @forest: #cfd6c8;
-@grass: lighten(@forest,5%);
-@park:lighten(@forest,5%);
-@hospital:#EBCDDE;
-@school: #D9D5E3;
+@grass: lighten(@forest, 5%);
+@park:lighten(@forest, 5%);
+@hospital:lighten(#EBCDDE, 7%);
+@school: lighten(#D9D5E3, 5%);
 @stadium: #D9CDC1;
 @beach: #ebe2cd;
 @runway: #BFBEBD;
@@ -23,7 +23,6 @@ Map { font-directory: url(./fonts); }
 @commercial: @land * 0.97;
 @industrial: @land * 0.96;
 @military: @land * 0.95;
-@firestation: red;
 @parking: #EEE;
 @place_of_worship: #E3C5C9;
 @admin: #000000;
