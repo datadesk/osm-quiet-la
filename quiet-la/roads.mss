@@ -69,6 +69,7 @@ come in as well.
 @rdz13_maj: 3;   @rdz13_med: 1.5; @rdz13_min: 1;
 @rdz14_maj: 4;   @rdz14_med: 2.5; @rdz14_min: 1.6;
 @rdz15_maj: 6;   @rdz15_med: 4;   @rdz15_min: 2;
+@rdz16_maj: 8.5;   @rdz16_med: 6.5;   @rdz16_min: 3.75;
 
 /* ---- Casing ----------------------------------------------- */
 
@@ -146,6 +147,14 @@ come in as well.
     [stylegroup='minorroad']{ line-width: @rdz15_min + 2; }
     [stylegroup='service']  { line-width: @rdz15_min / 3 + 2; }
     [stylegroup='noauto']   { line-width: @rdz15_min / 4 + 2; }
+    [stylegroup='railway']  { line-width: 1.5 + 2; }
+  }
+  [zoom=16] {
+    [stylegroup='motorway'] { line-width: @rdz16_maj + 2.5; }
+    [stylegroup='mainroad'] { line-width: @rdz16_med + 2; }
+    [stylegroup='minorroad']{ line-width: @rdz16_min + 2; }
+    [stylegroup='service']  { line-width: @rdz16_min / 3 + 2; }
+    [stylegroup='noauto']   { line-width: @rdz16_min / 4 + 2; }
     [stylegroup='railway']  { line-width: 1.5 + 2; }
   }
 }
@@ -236,6 +245,14 @@ come in as well.
     [stylegroup='noauto']   { line-width: @rdz15_min / 4; line-dasharray: 1,1; }
     [stylegroup='railway']  { line-width: 1.5; }
   }
+  [zoom=16] {
+    [stylegroup='motorway'] { line-width: @rdz16_maj; }
+    [stylegroup='mainroad'] { line-width: @rdz16_med; }
+    [stylegroup='minorroad']{ line-width: @rdz16_min; }
+    [stylegroup='service']  { line-width: @rdz16_min / 3; }
+    [stylegroup='noauto']   { line-width: @rdz16_min / 4; line-dasharray: 1,1; }
+    [stylegroup='railway']  { line-width: 1.5; }
+  }
 }
 
 /* ---- Bridge fill for dashed lines -------------------------------- */
@@ -260,6 +277,10 @@ come in as well.
     [stylegroup='noauto']   { line-width: @rdz15_min / 4 + 1; }
     [stylegroup='railway']  { line-width: 1.5 + 1; }
   }
+  [zoom=16] {
+    [stylegroup='noauto']   { line-width: @rdz15_min / 4 + 1; }
+    [stylegroup='railway']  { line-width: 1.5 + 1; }
+  }
 }
 
 /* ---- Turning Circles --------------------------------------------- */
@@ -279,6 +300,7 @@ come in as well.
 #turning-circle-fill {
   [zoom=14] { marker-width:@rdz14_min * 1.1; }
   [zoom=15] { marker-width:@rdz15_min * 1.1; }
+  [zoom=16] { marker-width:@rdz15_min * 1.1; }
 }
 
 /* ================================================================== */
@@ -296,6 +318,7 @@ come in as well.
     [zoom=13]{ line-width:5; }
     [zoom=14]{ line-width:7; }
     [zoom=15]{ line-width:11; }
+    [zoom=16]{ line-width:11; }
   }
   [type='taxiway'] {
     [zoom=10]{ line-width:0.2; }
@@ -304,6 +327,7 @@ come in as well.
     [zoom=13]{ line-width:1; }
     [zoom=14]{ line-width:1.5; }
     [zoom=15]{ line-width:2; }
+    [zoom=16]{ line-width:2; }
   }
 }
 

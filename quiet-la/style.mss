@@ -38,13 +38,16 @@ Map {
     line-cap: round;
     line-join: round;
     [zoom=15]{ line-width: 2; }
+    [zoom=16]{ line-width: 2.25; }
   }
   [type='stream'] {
     [zoom=15]{ line-width: 0.6; }
+    [zoom=16]{ line-width: 0.8; }
   }
   [type='ditch'],
   [type='drain'] {
     [zoom=15]{ line-width: 0.1; }
+    [zoom=16]{ line-width: 0.3; }
   }
 }
 
@@ -61,6 +64,7 @@ Map {
   [zoom=13] {line-width:0.8;}
   [zoom=14] {line-width:0.9;}
   [zoom=15] {line-width:1.0;}
+  [zoom=16] {line-width:1.1;}
 } 
 
 #california-border {
@@ -74,6 +78,7 @@ Map {
   [zoom=13] {line-width:1.0;}
   [zoom=14] {line-width:1.1;}
   [zoom=15] {line-width:1.2;}
+  [zoom=16] {line-width:1.2;}
 }
 
 #mexico-border {
@@ -87,6 +92,7 @@ Map {
   [zoom=13] {line-width:1.1;}
   [zoom=14] {line-width:1.2;}
   [zoom=15] {line-width:1.3;}
+  [zoom=16] {line-width:1.4;}
 }
 
 /* LAND USE */

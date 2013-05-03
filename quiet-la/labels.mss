@@ -92,6 +92,7 @@
   }
   [zoom=14] {text-size:16;}
   [zoom=15] {text-size:16;}
+  [zoom=16] {text-size:16;}
 } 
 
 #neighborhoods[zoom>=11] {
@@ -111,6 +112,7 @@
   [zoom>13]{text-name:"[Name]";}
   [zoom=14] {text-size:15;}    
   [zoom=15] {text-size:15;}
+  [zoom=16] {text-size:18;}
 }
 
 
@@ -120,9 +122,13 @@
   [zoom=11][area>25600000],
   [zoom=13][area>1600000],
   [zoom=14][area>320000],
-  [zoom=15][area>30000] {
+  [zoom=15][area>30000],
+  [zoom=16][area>12000], {
     text-name: "[name]";
     text-size: 12;
+    [zoom=16] {
+      text-size: 13;
+    }
     text-min-distance:2;
     text-placement: point;
     text-face-name: @sans_light;
@@ -164,7 +170,7 @@
       text-halo-fill: lighten(@place_of_worship, 10);
     }
   }
-  [zoom=15][area>=1600000] {
+  [zoom>=15][area>=1600000] {
     text-name: "[name]";
     text-size: 13;
     text-wrap-width: 60;
@@ -252,6 +258,9 @@
   [zoom=15] {
     text-size:13;
   }
+  [zoom=16] {
+    text-size:13;
+  }
 }
 
 #motorway-labels[type='motorway'][zoom>9] {
@@ -296,6 +305,10 @@
     text-min-distance:120;
     text-size:15;
   }
+  [zoom=16] {
+    text-min-distance:120;
+    text-size:16;
+  }
 }
 
 #mainroad-labels[type='primary'][zoom>12],
@@ -317,6 +330,10 @@
     text-size:11;
     text-min-distance:150;
   }
+  [zoom=16] {
+    text-size:12.5;
+    text-min-distance:190;
+  }
 }
 
 #minorroad-labels[zoom>14] {
@@ -327,4 +344,8 @@
   text-fill:@road_text;
   text-halo-fill:@road_halo;
   text-halo-radius:1;
+  [zoom=16] {
+    text-size:10.5;
+    text-min-distance:190;
+  }
 }
