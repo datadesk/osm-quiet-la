@@ -10,7 +10,7 @@ Map { font-directory: url(./fonts); }
 @land:#efebe7;
 @forest: #cfd6c8;
 @grass: lighten(@forest, 5%);
-@park:lighten(@forest, 5%);
+@park:lighten(@forest, 3%);
 @hospital:lighten(#EBCDDE, 7%);
 @school: lighten(#D9D5E3, 5%);
 @stadium: #D9CDC1;

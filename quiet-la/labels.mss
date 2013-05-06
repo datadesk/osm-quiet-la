@@ -92,7 +92,7 @@
   }
   [zoom=14] {text-size:16;}
   [zoom=15] {text-size:16;}
-  [zoom=16] {text-size:16;}
+  [zoom=16] {text-size:17;}
 } 
 
 #neighborhoods[zoom>=11] {
@@ -111,8 +111,8 @@
   }
   [zoom>13]{text-name:"[Name]";}
   [zoom=14] {text-size:15;}    
-  [zoom=15] {text-size:15;}
-  [zoom=16] {text-size:18;}
+  [zoom=15] {text-size:17;}
+  [zoom=16] {text-size:19;}
 }
 
 
@@ -123,7 +123,7 @@
   [zoom=13][area>1600000],
   [zoom=14][area>320000],
   [zoom=15][area>30000],
-  [zoom=16][area>12000], {
+  [zoom=16][area>8000], {
     text-name: "[name]";
     text-size: 12;
     [zoom=16] {
@@ -170,9 +170,15 @@
       text-halo-fill: lighten(@place_of_worship, 10);
     }
   }
-  [zoom>=15][area>=1600000] {
+  [zoom=15][area>=1600000] {
     text-name: "[name]";
     text-size: 13;
+    text-wrap-width: 60;
+    text-character-spacing: 1;
+  }  
+  [zoom=16][area>=1200000] {
+    text-name: "[name]";
+    text-size: 14;
     text-wrap-width: 60;
     text-character-spacing: 1;
   }  
@@ -230,6 +236,9 @@
       shield-min-padding: 150;
       shield-min-distance: 60;
     }
+    //[zoom=16] {
+    // shield-size:20; 
+    //}
   }
 }
 
@@ -306,7 +315,7 @@
     text-size:15;
   }
   [zoom=16] {
-    text-min-distance:120;
+    text-min-distance:500;
     text-size:16;
   }
 }
