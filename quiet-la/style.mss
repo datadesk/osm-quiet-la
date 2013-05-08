@@ -116,7 +116,7 @@ Map {
   [type='park'] { polygon-fill: @park; }
   [type='playground'] { polygon-fill: @park; }
   [type='parking'] { polygon-fill: @parking; }
-  [type='pedestrian'] { polygon-fill: @pedestrian_fill; }
+  [type='pedestrian'] { polygon-fill: @parking*0.97; }
   [type='pitch'] { polygon-fill: @park; }
   [type='place_of_worship'] { polygon-fill: @place_of_worship; }
   [type='recreation_ground'] { polygon-fill: @park; }
