@@ -207,28 +207,24 @@
     [type="SR"] {shield-fill: #333;}
     [zoom>10][zoom<16]{
       shield-file: url("resources/interstate_shield_small.png");
-      [type="CA"]{shield-file: url("resources/ca_shield_small.png");}
-      [type="SR"]{shield-file: url("resources/ca_shield_small.png");}
+      [type="CA"],[type="SR"]{shield-file: url("resources/ca_shield_small.png");}
       [type="US"]{shield-file: url("resources/us_shield_small.png");}
     }
     [zoom>=16]{
       shield-file: url("resources/interstate_shield_large.png");
-      [type="CA"]{shield-file: url("resources/ca_shield_large.png");}
-      [type="SR"]{shield-file: url("resources/ca_shield_large.png");}
+      [type="CA"],[type="SR"]{shield-file: url("resources/ca_shield_large.png");}
       [type="US"]{shield-file: url("resources/us_shield_large.png");}
     }
     [ref_len>=3]{
       shield-text-dx:0;
       [zoom>10][zoom<16]{
         shield-file: url("resources/interstate_shield_small_wide.png");
-        [type="CA"]{shield-file: url("resources/ca_shield_small_wide.png");}
-        [type="SR"]{shield-file: url("resources/ca_shield_small_wide.png");}
+        [type="CA"],[type="SR"]{shield-file: url("resources/ca_shield_small_wide.png");}
         [type="US"]{shield-file: url("resources/us_shield_small_wide.png");}
       }
       [zoom>=16]{
         shield-file: url("resources/interstate_shield_large_wide.png");
-        [type="CA"]{shield-file: url("resources/ca_shield_large_wide.png");}
-        [type="SR"]{shield-file: url("resources/ca_shield_large_wide.png");}
+        [type="CA"],[type="SR"]{shield-file: url("resources/ca_shield_large_wide.png");}
         [type="US"]{shield-file: url("resources/us_shield_large_wide.png");} 
       }
     }
