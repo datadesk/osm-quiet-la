@@ -200,45 +200,52 @@
     shield-avoid-edges: true;
     shield-spacing:150;
     shield-min-distance: 50;
-    shield-file: url("resources/interstate_shield_small.png");
-    [type="CA"]{
-      shield-file: url("resources/ca_shield_small1.png");
-    }
-    [type="SR"]{
-      shield-file: url("resources/ca_shield_small1.png");
-      shield-fill: #333;
-    }
     [type="US"]{
-      shield-file: url("resources/us_shield_small1.png");
       shield-text-dx: 1;
       shield-text-dy: 0;
     }
+    [type="SR"] {shield-fill: #333;}
+    [zoom>10][zoom<16]{
+      shield-file: url("resources/interstate_shield_small.png");
+      [type="CA"]{shield-file: url("resources/ca_shield_small.png");}
+      [type="SR"]{shield-file: url("resources/ca_shield_small.png");}
+      [type="US"]{shield-file: url("resources/us_shield_small.png");}
+    }
+    [zoom>=16]{
+      shield-file: url("resources/interstate_shield_large.png");
+      [type="CA"]{shield-file: url("resources/ca_shield_large.png");}
+      [type="SR"]{shield-file: url("resources/ca_shield_large.png");}
+      [type="US"]{shield-file: url("resources/us_shield_large.png");}
+    }
     [ref_len>=3]{
       shield-text-dx:0;
-      shield-file: url("resources/interstate_shield_wide.png");
-      [type="CA"]{
-        shield-file: url("resources/ca_shield_wide1.png");
+      [zoom>10][zoom<16]{
+        shield-file: url("resources/interstate_shield_small_wide.png");
+        [type="CA"]{shield-file: url("resources/ca_shield_small_wide.png");}
+        [type="SR"]{shield-file: url("resources/ca_shield_small_wide.png");}
+        [type="US"]{shield-file: url("resources/us_shield_small_wide.png");}
       }
-      [type="SR"]{
-        shield-file: url("resources/ca_shield_wide1.png");
-      }
-      [type="US"]{
-        shield-file: url("resources/us_shield_wide1.png");
+      [zoom>=16]{
+        shield-file: url("resources/interstate_shield_large_wide.png");
+        [type="CA"]{shield-file: url("resources/ca_shield_large_wide.png");}
+        [type="SR"]{shield-file: url("resources/ca_shield_large_wide.png");}
+        [type="US"]{shield-file: url("resources/us_shield_large_wide.png");} 
       }
     }
     [zoom<=12] {
       shield-min-distance: 50;
     }
-    [zoom>12] {
+    [zoom>12] { 
       shield-min-distance: 40;
     }
     [zoom>=14] {
       shield-min-padding: 150;
       shield-min-distance: 60;
     }
-    //[zoom=16] {
-    // shield-size:20; 
-    //}
+    [zoom=16] { 
+      shield-size:14;
+      shield-opacity: 0.98;
+    }
   }
 }
 
