@@ -32,7 +32,7 @@ def download_osm(state='california'):
     Download a state slice of OpenStreetMap data from GeoFabrik's 
     daily snapshots.
 
-    Returns a path to the a bz2 file containing the data.
+    Returns a path to the a pbf file containing the data.
 
     Keyword argument:
 
@@ -42,22 +42,22 @@ def download_osm(state='california'):
     """
     print('Updating OpenStreetMap slice for the state of %s' % state.title())
     # Figure out what file we want
-    bz2 = '%s-latest.osm.bz2' % state
+    pbf = '%s-latest.osm.pbf' % state
     # Delete it from the local folder if it already exists
-    if os.path.exists('./%s' % bz2):
-        print('- Deleting existing OpenStreetMap bz2 from this directory')
-        os.remove('./%s' % bz2)
+    if os.path.exists('./%s' % pbf):
+        print('- Deleting existing OpenStreetMap pbf from this directory')
+        os.remove('./%s' % pbf)
     # Download a new file from our data source
     url = 'http://download.geofabrik.de/north-america/us/%s'
     print('- Downloading new OpenStreetMap slice from geofabrik.de')
-    urllib.urlretrieve(url % bz2, './%s' % bz2)
+    urllib.urlretrieve(url % pbf, './%s' % pbf)
     print('- Download successful')
-    return bz2
+    return pbf
 
 
-def load_osm(bz2,  postgres_user='postgres', postgres_host='localhost'):
+def load_osm(pbf,  postgres_user='postgres', postgres_host='localhost'):
     """
-    Loads a bz2 slice of OSM data into the database.
+    Loads a pbf slice of OSM data into the database.
 
     Keyword arguments:
     
@@ -67,12 +67,8 @@ def load_osm(bz2,  postgres_user='postgres', postgres_host='localhost'):
             with osm2psql. Default: 'localhost'
 
     """
-    # Unzip file
-    print ('- Unzipping OpenStreetMap bz2')
-    local('bunzip2 ./%s' % bz2)
-    print ('- Unzip successful')
     # Drop the database if it already exists
-    state = bz2.replace("-latest.osm.bz2", "")
+    state = pbf.replace("-latest.osm.pbf", "")
     db = 'osm_%s' % state
     try:
         local("sudo -u %s dropdb %s" % (postgres_user, db))
@@ -88,8 +84,7 @@ def load_osm(bz2,  postgres_user='postgres', postgres_host='localhost'):
     ))
     # Load the database with osm2pgsql
     print('- Loading OpenStreetMap data')
-    osm = '%s-latest.osm' % state
-    local('osm2pgsql -U %s -H %s -d %s %s' % (postgres_user, postgres_host, db, osm))
+    local('osm2pgsql --slim --cache=500MB --drop -U %s -H %s -d %s %s' % (postgres_user, postgres_host, db, pbf))
     # Remove OSM file
     print('Removing %s' % osm)
     local('rm %s' % osm)
@@ -120,8 +115,8 @@ def update_osm(state='california', postgres_user='postgres', postgres_host='loca
         $ fab update_osm:state=iowa
     
     """
-    bz2 = download_osm(state)
-    load_osm(bz2, postgres_user=postgres_user, postgres_host=postgres_host)
+    pbf = download_osm(state)
+    load_osm(pbf, postgres_user=postgres_user, postgres_host=postgres_host)
 
 
 def build_tiles():
