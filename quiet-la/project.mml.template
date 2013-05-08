@@ -13,7 +13,7 @@
   "format": "png",
   "interactivity": false,
   "minzoom": 8,
-  "maxzoom": 15,
+  "maxzoom": 16,
   "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
   "Stylesheet": [
     "style.mss",
@@ -23,414 +23,492 @@
   ],
   "Layer": [
     {
-      "geometry": "polygon",
+      "Datasource": {
+        "file": "./layers/water/water_polygons.shp"
+      },
+      "advanced": {},
+      "class": "water",
       "extent": [
         -180,
         -85.051,
         180,
         85.051
       ],
+      "geometry": "polygon",
       "id": "ocean",
-      "class": "water",
-      "Datasource": {
-        "file": "./layers/water/water_polygons.shp"
+      "name": "ocean",
+      "properties": {
+        "cache-features": "true"
       },
-      "srs-name": "WGS84",
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "advanced": {},
-      "name": "ocean"
+      "srs-name": "WGS84"
     },
     {
-      "extent": [
-        -124.41512516186312,
-        32.531136160652274,
-        -114.13253581616009,
-        42.009360468634725
-      ],
       "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT\n    way,\n    way_area AS area,\n    COALESCE(landuse, leisure, \"natural\", highway, amenity, tourism) AS type\n  FROM planet_osm_polygon\n  ORDER BY way_area DESC\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
         "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
         "host": "localhost",
-        "user": "postgres",
-        "password": "postgres",
         "id": "landuse",
-        "project": "quiet-la",
-        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-      },
-      "id": "landuse",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "landuse"
-    },
-    {
-      "geometry": "polygon",
-      "name": "water-polygons",
-      "id": "water-polygons",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "class": "",
-      "Datasource": {
-        "table": "( SELECT \"name\", \"natural\", \"landuse\", \"waterway\", \"way\"\n  FROM planet_osm_polygon\n  WHERE \"natural\" IN ('lake','water')\n  OR \"waterway\" IN ('canal','mill_pond','riverbank')\n  OR \"landuse\" IN ('basin','reservoir','water')\n  ORDER BY z_order asc\n) AS water",
         "key_field": "",
-        "geometry_field": "",
-        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
-        "type": "postgis",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
         "password": "postgres",
-        "id": "water",
+        "port": "5432",
         "project": "quiet-la",
+        "srid": 900913,
         "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-        "extent_cache": "auto"
+        "table": "( SELECT\n    way,\n    way_area AS area,\n    COALESCE(landuse, leisure, \"natural\", highway, amenity, tourism) AS type\n  FROM planet_osm_polygon\n  ORDER BY way_area DESC\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
       },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.41512516186312,
         32.531136160652274,
         -114.13253581616009,
         42.009360468634725
       ],
-      "srs-name": "900913",
-      "advanced": {}
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -124.41539735139418,
-        32.53089766483102,
-        -114.13002996567504,
-        42.00974547001752
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, waterway AS type\n  FROM planet_osm_line\n  WHERE waterway IN ('river', 'canal', 'stream', 'ditch', 'drain')\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+      "id": "landuse",
+      "name": "landuse",
+      "properties": {
+        "cache-features": "true"
       },
-      "id": "water-lines-high",
-      "class": "",
-      "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "water-lines-high"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
-      "extent": [
-        -124.41539735139418,
-        32.53089766483102,
-        -114.13002996567504,
-        42.00974547001752
-      ],
       "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, waterway AS type\n  FROM planet_osm_line\n  WHERE waterway IN ('river', 'canal', 'stream')) as data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
         "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
         "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+        "id": "water",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "project": "quiet-la",
+        "srid": 900913,
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+        "table": "( SELECT \"name\", \"natural\", \"landuse\", \"waterway\", \"way\"\n  FROM planet_osm_polygon\n  WHERE \"natural\" IN ('lake','water')\n  OR \"waterway\" IN ('canal','mill_pond','riverbank')\n  OR \"landuse\" IN ('basin','reservoir','water')\n  ORDER BY z_order asc\n) AS water",
+        "type": "postgis",
+        "user": "postgres"
       },
-      "id": "water-lines-medium",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "water-lines-medium"
-    },
-    {
-      "geometry": "linestring",
+      "class": "",
       "extent": [
-        -124.41539735139418,
-        32.53089766483102,
-        -114.13002996567504,
-        42.00974547001752
+        -124.41512516186312,
+        32.531136160652274,
+        -114.13253581616009,
+        42.009360468634725
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, waterway AS type\n  FROM planet_osm_line\n  WHERE waterway IN ('river', 'canal')\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
-      "id": "water-lines-low",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "water-lines-low"
-    },
-    {
       "geometry": "polygon",
-      "name": "building",
-      "id": "building",
+      "id": "water-polygons",
+      "name": "water-polygons",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "class": "building",
-      "Datasource": {
-        "table": "( SELECT way,building,aeroway\nFROM planet_osm_polygon\nWHERE (\"building\" IS NOT NULL\nAND \"building\" != 'no')\nOR \"aeroway\" IN ('terminal')\nORDER BY z_order asc ) AS building",
-        "key_field": "",
-        "geometry_field": "",
-        "extent": "",
-        "type": "postgis",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      }
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way, waterway AS type\n  FROM planet_osm_line\n  WHERE waterway IN ('river', 'canal', 'stream', 'ditch', 'drain')\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.41539735139418,
         32.53089766483102,
         -114.13002996567504,
         42.00974547001752
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, aeroway AS type\n  FROM planet_osm_line\n  WHERE aeroway IN ('apron', 'runway', 'taxiway')\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+      "geometry": "linestring",
+      "id": "water-lines-high",
+      "name": "water-lines-high",
+      "properties": {
+        "cache-features": "true"
       },
-      "id": "aeroway",
-      "class": "",
-      "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "aeroway"
+      "srs-name": "900913"
     },
     {
-      "geometry": "point",
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way, waterway AS type\n  FROM planet_osm_line\n  WHERE waterway IN ('river', 'canal', 'stream')) as data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
+      "extent": [
+        -124.41539735139418,
+        32.53089766483102,
+        -114.13002996567504,
+        42.00974547001752
+      ],
+      "geometry": "linestring",
+      "id": "water-lines-medium",
+      "name": "water-lines-medium",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "srs-name": "900913"
+    },
+    {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way, waterway AS type\n  FROM planet_osm_line\n  WHERE waterway IN ('river', 'canal')\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
+      "extent": [
+        -124.41539735139418,
+        32.53089766483102,
+        -114.13002996567504,
+        42.00974547001752
+      ],
+      "geometry": "linestring",
+      "id": "water-lines-low",
+      "name": "water-lines-low",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "srs-name": "900913"
+    },
+    {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way,building,aeroway\nFROM planet_osm_polygon\nWHERE (\"building\" IS NOT NULL\nAND \"building\" != 'no')\nOR \"aeroway\" IN ('terminal')\nORDER BY z_order asc ) AS building",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "class": "building",
+      "geometry": "polygon",
+      "id": "building",
+      "name": "building",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    },
+    {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way, aeroway AS type\n  FROM planet_osm_line\n  WHERE aeroway IN ('apron', 'runway', 'taxiway')\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
+      "extent": [
+        -124.41539735139418,
+        32.53089766483102,
+        -114.13002996567504,
+        42.00974547001752
+      ],
+      "geometry": "linestring",
+      "id": "aeroway",
+      "name": "aeroway",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "srs-name": "900913"
+    },
+    {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "(SELECT way \n  FROM planet_osm_point \n  WHERE highway = 'turning_circle') as data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.41366678268132,
         32.53201179595868,
         -114.13386428411252,
         42.00450369520372
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(SELECT way \n  FROM planet_osm_point \n  WHERE highway = 'turning_circle') as data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849666.0339721,3833349.83597454,-12705323.654376,5161654.09962509",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
+      "geometry": "point",
       "id": "turning-circle-case",
-      "class": "",
-      "srs-name": "900913",
+      "name": "turning-circle-case",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "turning-circle-case"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "(SELECT \n    way,\n    COALESCE(highway, railway) AS type,\n    0 AS tunnel,\n    0 AS bridge,\n    CASE WHEN highway IN ('motorway', 'trunk') THEN 1 ELSE 0 END as motorway,\n    access,\n    'fill' AS render,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary',\n        'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' \n  END AS stylegroup\n  FROM planet_osm_line\n    WHERE (highway IS NOT NULL OR railway IS NOT NULL)\n    AND (tunnel IS NULL OR tunnel = 'no')\n    AND (bridge IS NULL OR bridge = 'no')\n  ORDER BY z_order) as data\n",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.41539735139418,
         32.53089766483102,
         -114.13002996567504,
         42.00974547001752
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(SELECT \n    way,\n    COALESCE(highway, railway) AS type,\n    0 AS tunnel,\n    0 AS bridge,\n    CASE WHEN highway IN ('motorway', 'trunk') THEN 1 ELSE 0 END as motorway,\n    access,\n    'fill' AS render,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary',\n        'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' \n  END AS stylegroup\n  FROM planet_osm_line\n    WHERE (highway IS NOT NULL OR railway IS NOT NULL)\n    AND (tunnel IS NULL OR tunnel = 'no')\n    AND (bridge IS NULL OR bridge = 'no')\n  ORDER BY z_order) as data\n",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
+      "geometry": "linestring",
       "id": "roads-high",
-      "class": "",
-      "srs-name": "900913",
+      "name": "roads-high",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "roads-high"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "(SELECT \n    way,\n    COALESCE(highway, railway) AS type,\n    0 AS tunnel,\n    0 AS bridge,\n    CASE WHEN highway IN ('motorway', 'trunk') THEN 1 ELSE 0 END as motorway,\n    access,\n    'fill' AS render,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary',\n        'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' \n  END AS stylegroup\n  FROM planet_osm_line\n    WHERE (highway IS NOT NULL OR railway IS NOT NULL)\n    AND (tunnel IS NULL OR tunnel = 'no')\n    AND (bridge IS NULL OR bridge = 'no')\n    AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary')\n  ORDER BY z_order) as data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.90590309850906,
         14.480761560755488,
         -92.33964220236187,
         43.6166289350576
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(SELECT \n    way,\n    COALESCE(highway, railway) AS type,\n    0 AS tunnel,\n    0 AS bridge,\n    CASE WHEN highway IN ('motorway', 'trunk') THEN 1 ELSE 0 END as motorway,\n    access,\n    'fill' AS render,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary',\n        'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' \n  END AS stylegroup\n  FROM planet_osm_line\n    WHERE (highway IS NOT NULL OR railway IS NOT NULL)\n    AND (tunnel IS NULL OR tunnel = 'no')\n    AND (bridge IS NULL OR bridge = 'no')\n    AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary')\n  ORDER BY z_order) as data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13904461.53,1629431.49,-10279201.95,5406305.04",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
+      "geometry": "linestring",
       "id": "roads-mid",
-      "class": "",
-      "srs-name": "900913",
+      "name": "roads-mid",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "roads-mid"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "(SELECT way, highway AS type\n  FROM planet_osm_roads\n  WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')) as data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.40969071372031,
         32.531329743965394,
         -114.13159294443788,
         42.009498970614125
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(SELECT way, highway AS type\n  FROM planet_osm_roads\n  WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')) as data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849223.42,3833259.78,-12705070.81,5162402.45",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
+      "geometry": "linestring",
       "id": "roads-medium",
-      "class": "",
-      "srs-name": "900913",
+      "name": "roads-medium",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "roads-medium"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
-      "extent": [
-        -124.41539735139418,
-        32.53089766483102,
-        -114.13002996567504,
-        42.00974547001752
-      ],
       "Datasource": {
-        "type": "postgis",
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
         "table": "( SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, render, layer, 1 as tunnel,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' END AS stylegroup\n  FROM (\n    SELECT *, '1_outline' AS render FROM planet_osm_line\n    WHERE tunnel NOT IN ('', '0', 'no')\n    UNION ALL\n    SELECT *, '2_line' AS render FROM planet_osm_line\n    WHERE tunnel NOT IN ('', '0', 'no')\n    UNION ALL\n    SELECT *, '3_inline' AS render FROM planet_osm_line\n    WHERE tunnel NOT IN ('', '0', 'no')\n  ) AS tunnels\n  ORDER BY layer ASC, render ASC\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+        "type": "postgis",
+        "user": "postgres"
       },
-      "id": "tunnel",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "tunnel"
-    },
-    {
-      "geometry": "linestring",
+      "class": "",
       "extent": [
         -124.41539735139418,
         32.53089766483102,
         -114.13002996567504,
         42.00974547001752
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' END AS stylegroup\n  FROM (\n    SELECT *, '1_outline' AS render FROM planet_osm_line\n    WHERE bridge NOT IN ('', '0', 'no')\n    UNION ALL\n    SELECT *, '2_line' AS render FROM planet_osm_line\n    WHERE bridge NOT IN ('', '0', 'no')\n    UNION ALL\n    SELECT *, '3_inline' AS render FROM planet_osm_line\n    WHERE bridge NOT IN ('', '0', 'no')\n  ) AS bridges\n  ORDER BY layer ASC, render ASC\n) AS data\n",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+      "geometry": "linestring",
+      "id": "tunnel",
+      "name": "tunnel",
+      "properties": {
+        "cache-features": "true"
       },
-      "id": "bridge",
-      "class": "",
-      "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "bridge"
+      "srs-name": "900913"
     },
     {
-      "geometry": "point",
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,\n  CASE\n    WHEN highway IN ('motorway', 'trunk') THEN 'motorway'\n    WHEN highway IN ('primary', 'secondary') THEN 'mainroad'\n    WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'\n    WHEN highway IN ('service', 'track') THEN 'service'\n    WHEN highway IN ('path', 'cycleway', 'footway', 'pedestrian', 'steps', 'bridleway') THEN 'noauto'\n    WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'\n    ELSE 'other' END AS stylegroup\n  FROM (\n    SELECT *, '1_outline' AS render FROM planet_osm_line\n    WHERE bridge NOT IN ('', '0', 'no')\n    UNION ALL\n    SELECT *, '2_line' AS render FROM planet_osm_line\n    WHERE bridge NOT IN ('', '0', 'no')\n    UNION ALL\n    SELECT *, '3_inline' AS render FROM planet_osm_line\n    WHERE bridge NOT IN ('', '0', 'no')\n  ) AS bridges\n  ORDER BY layer ASC, render ASC\n) AS data\n",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
+      "extent": [
+        -124.41539735139418,
+        32.53089766483102,
+        -114.13002996567504,
+        42.00974547001752
+      ],
+      "geometry": "linestring",
+      "id": "bridge",
+      "name": "bridge",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "srs-name": "900913"
+    },
+    {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way \n  FROM planet_osm_point\n  WHERE highway = 'turning_circle'\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.41366678268132,
         32.53201179595868,
         -114.13386428411252,
         42.00450369520372
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way \n  FROM planet_osm_point\n  WHERE highway = 'turning_circle'\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849666.0339721,3833349.83597454,-12705323.654376,5161654.09962509",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
+      "geometry": "point",
       "id": "turning-circle-fill",
-      "class": "",
-      "srs-name": "900913",
+      "name": "turning-circle-fill",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "turning-circle-fill"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
-      "name": "shields",
-      "id": "shields",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "class": "shield",
       "Datasource": {
-        "table": "( \nSELECT way,name,highway, \nchar_length(trim(both ' ' from regexp_replace(regexp_replace(ref, 'CA |US |I  |I|SR', ''), ';.*', ''))) as ref_len,\ntrim(both ' ' from regexp_replace(regexp_replace(ref, 'CA |US |I  |I|SR', ''), ';.*', '')) as ref, \nCASE WHEN oneway in\n  ('yes','true','1') THEN 'yes'::text END as oneway,\nCASE WHEN strpos(ref, 'I') != 0 THEN 'I'::text\n\tWHEN strpos(ref, 'US') != 0 THEN 'US'::text \n\tWHEN strpos(ref, 'CA') != 0 THEN 'CA'::text \n\tWHEN strpos(ref, 'SR') != 0 THEN 'SR'::text \nEND as \"type\"\nFROM planet_osm_line\nWHERE \"highway\" IS NOT NULL\nAND (\"name\" is not null or \"oneway\" is not null)\nORDER BY z_order ASC\n) as highway_label",
-        "key_field": "",
-        "geometry_field": "",
-        "extent": "",
-        "type": "postgis",
         "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "geometry_field": "",
         "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      }
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( \nSELECT way,name,highway, \nchar_length(trim(both ' ' from regexp_replace(regexp_replace(ref, 'CA |US |I  |I|SR', ''), ';.*', ''))) as ref_len,\ntrim(both ' ' from regexp_replace(regexp_replace(ref, 'CA |US |I  |I|SR', ''), ';.*', '')) as ref, \nCASE WHEN oneway in\n  ('yes','true','1') THEN 'yes'::text END as oneway,\nCASE WHEN strpos(ref, 'I') != 0 THEN 'I'::text\n\tWHEN strpos(ref, 'US') != 0 THEN 'US'::text \n\tWHEN strpos(ref, 'CA') != 0 THEN 'CA'::text \n\tWHEN strpos(ref, 'SR') != 0 THEN 'SR'::text \nEND as \"type\"\nFROM planet_osm_line\nWHERE \"highway\" IS NOT NULL\nAND (\"name\" is not null or \"oneway\" is not null)\nORDER BY z_order ASC\n) as highway_label",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "class": "shield",
+      "geometry": "linestring",
+      "id": "shields",
+      "name": "shields",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
     },
     {
       "geometry": "linestring",
@@ -487,231 +565,268 @@
       "name": "county-borders"
     },
     {
-      "geometry": "linestring",
-      "extent": [
-        -124.41539735139418,
-        32.53089766483102,
-        -114.13002996567504,
-        42.00974547001752
-      ],
       "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, highway AS type, name, ref, oneway, CHAR_LENGTH(ref) AS reflen\n    FROM planet_osm_line\n    WHERE highway IN ('motorway', 'trunk')\n      AND (name IS NOT NULL OR ref IS NOT NULL)\n) AS data\n",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
         "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
         "host": "localhost",
-        "user": "postgres",
-        "password": "postgres",
         "id": "motorway-labels",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
         "project": "quiet-la",
-        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+        "srid": 900913,
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+        "table": "( SELECT way, highway AS type, name, ref, oneway, CHAR_LENGTH(ref) AS reflen\n    FROM planet_osm_line\n    WHERE highway IN ('motorway', 'trunk')\n      AND (name IS NOT NULL OR ref IS NOT NULL)\n) AS data\n",
+        "type": "postgis",
+        "user": "postgres"
       },
+      "advanced": {},
+      "class": "",
+      "extent": [
+        -124.41539735139418,
+        32.53089766483102,
+        -114.13002996567504,
+        42.00974547001752
+      ],
+      "geometry": "linestring",
       "id": "motorway-labels",
-      "class": "",
-      "srs-name": "900913",
+      "name": "motorway-labels",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "motorway-labels"
+      "srs-name": "900913"
     },
     {
-      "geometry": "linestring",
-      "extent": [
-        -124.41539735139418,
-        32.53089766483102,
-        -114.13002996567504,
-        42.00974547001752
-      ],
       "Datasource": {
-        "type": "postgis",
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
         "table": "( SELECT way, highway AS type, name, oneway\n  FROM planet_osm_line\n  WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))\n    AND highway IN ('primary', 'secondary', 'tertiary')\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+        "type": "postgis",
+        "user": "postgres"
       },
-      "id": "mainroad-labels",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "mainroad-labels"
-    },
-    {
-      "geometry": "linestring",
+      "class": "",
       "extent": [
         -124.41539735139418,
         32.53089766483102,
         -114.13002996567504,
         42.00974547001752
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "( SELECT way, highway AS type, name, oneway\n  FROM planet_osm_line\n  WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))\n    AND highway IN ('residential', 'unclassified', 'road', 'living_street', 'unknown')\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849858.68,3833202.73,-12704896.82,5162439.38",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
+      "geometry": "linestring",
+      "id": "mainroad-labels",
+      "name": "mainroad-labels",
+      "properties": {
+        "cache-features": "true"
       },
-      "id": "minorroad-labels",
-      "class": "",
-      "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "minorroad-labels"
+      "srs-name": "900913"
     },
     {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "( SELECT way, highway AS type, name, oneway\n  FROM planet_osm_line\n  WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))\n    AND highway IN ('residential', 'unclassified', 'road', 'living_street', 'unknown')\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
+      "extent": [
+        -124.41539735139418,
+        32.53089766483102,
+        -114.13002996567504,
+        42.00974547001752
+      ],
+      "geometry": "linestring",
+      "id": "minorroad-labels",
+      "name": "minorroad-labels",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "srs-name": "900913"
+    },
+    {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "srid": 900913,
+        "table": "(SELECT name, way, 'line' as source\nFROM planet_osm_line\nWHERE waterway IN  ('river', 'canal', 'stream', 'ditch', 'drain')\nAND name IS NOT NULL\n\nUNION ALL\n\nSELECT name, way, 'polygon' as source\nFROM planet_osm_polygon\nWHERE \"waterway\" IN ('river', 'stream')\nOR \"natural\" IN ('lake','water')\nOR \"landuse\" IN ('basin','reservoir','water')\nAND name IS NOT NULL\n) as data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "",
       "extent": [
         -124.41512516186312,
         32.531136160652274,
         -114.13253581616009,
         42.009360468634725
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(SELECT name, way, 'line' as source\nFROM planet_osm_line\nWHERE waterway IN  ('river', 'canal', 'stream', 'ditch', 'drain')\nAND name IS NOT NULL\n\nUNION ALL\n\nSELECT name, way, 'polygon' as source\nFROM planet_osm_polygon\nWHERE \"waterway\" IN ('river', 'stream')\nOR \"natural\" IN ('lake','water')\nOR \"landuse\" IN ('basin','reservoir','water')\nAND name IS NOT NULL\n) as data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres"
-      },
+      "geometry": "linestring",
       "id": "waterway-labels",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
       "name": "waterway-labels",
-      "geometry": "linestring"
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "srs-name": "900913"
     },
     {
-      "geometry": "polygon",
-      "extent": [
-        -124.482003,
-        32.528832,
-        -114.131211,
-        42.009516999999995
-      ],
-      "id": "counties",
-      "class": "places",
       "Datasource": {
         "file": "./layers/counties/tl_2010_06_county10.shp",
         "id": "counties",
         "project": "quiet-la",
         "srs": ""
       },
-      "srs-name": "autodetect",
-      "srs": "",
       "advanced": {},
-      "name": "counties"
+      "class": "places",
+      "extent": [
+        -124.482003,
+        32.528832,
+        -114.131211,
+        42.009516999999995
+      ],
+      "geometry": "polygon",
+      "id": "counties",
+      "name": "counties",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "",
+      "srs-name": "autodetect"
     },
     {
-      "geometry": "polygon",
-      "extent": [
-        -118.944864189,
-        33.2981919777,
-        -117.645604,
-        34.8231929991
-      ],
-      "id": "regions",
-      "class": "places",
       "Datasource": {
         "file": "./layers/mapping_la_regions/la_county.shp",
         "id": "regions",
         "project": "quiet-la",
         "srs": ""
       },
-      "srs-name": "autodetect",
-      "srs": "",
       "advanced": {},
-      "name": "regions"
+      "class": "places",
+      "extent": [
+        -118.944864189,
+        33.2981919777,
+        -117.645604,
+        34.8231929991
+      ],
+      "geometry": "polygon",
+      "id": "regions",
+      "name": "regions",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "",
+      "srs-name": "autodetect"
     },
     {
-      "geometry": "polygon",
-      "extent": [
-        -118.668176,
-        33.7045379821,
-        -118.155289,
-        34.337306718
-      ],
-      "id": "neighborhoods",
-      "class": "places",
       "Datasource": {
         "file": "./layers/mapping_la_neighborhoods/la_city.shp",
         "id": "neighborhoods",
         "project": "quiet-la",
         "srs": ""
       },
-      "srs-name": "autodetect",
-      "srs": "",
       "advanced": {},
-      "name": "neighborhoods"
+      "class": "places",
+      "extent": [
+        -118.668176,
+        33.7045379821,
+        -118.155289,
+        34.337306718
+      ],
+      "geometry": "polygon",
+      "id": "neighborhoods",
+      "name": "neighborhoods",
+      "properties": {
+        "cache-features": "true"
+      },
+      "srs": "",
+      "srs-name": "autodetect"
     },
     {
-      "geometry": "polygon",
+      "Datasource": {
+        "file": "./layers/census-places/tl_2010_06_place10.shp"
+      },
+      "advanced": {},
+      "class": "places",
       "extent": [
         -124.26947499999999,
         32.534175,
         -114.229023,
         41.993227
       ],
+      "geometry": "polygon",
       "id": "census-places",
-      "class": "places",
-      "Datasource": {
-        "file": "./layers/census-places/tl_2010_06_place10.shp"
+      "name": "census-places",
+      "properties": {
+        "cache-features": "true"
       },
-      "srs-name": "autodetect",
       "srs": "",
-      "advanced": {},
-      "name": "census-places"
+      "srs-name": "autodetect"
     },
     {
+      "Datasource": {
+        "dbname": "osm_california",
+        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
+        "extent_cache": "auto",
+        "geometry_field": "",
+        "host": "localhost",
+        "id": "landuse-labels",
+        "key_field": "",
+        "password": "postgres",
+        "port": "5432",
+        "project": "quiet-la",
+        "srid": 900913,
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+        "table": "(\n  SELECT COALESCE(landuse, leisure, \"natural\", highway, amenity, tourism, military, religion, man_made, historic) AS type,\n    name, CAST(way_area as numeric)  AS area,\n    ST_PointOnSurface(way) AS way\n  FROM planet_osm_polygon\n  WHERE name IS NOT NULL\n  AND COALESCE(boundary, 'foo') <> 'administrative'\n    AND way && !bbox!\n    AND ST_IsValid(way)\n\n  UNION ALL\n\n  SELECT 'building' AS type, name, CAST(way_area as numeric)  AS area,\n    ST_PointOnSurface(way) AS way\n  FROM planet_osm_polygon\n  WHERE name IS NOT NULL\n    AND building NOT IN ('', 'no', '0', 'false')\n    AND way && !bbox!\n    AND ST_IsValid(way)\n  ORDER BY area DESC\n) AS data",
+        "type": "postgis",
+        "user": "postgres"
+      },
+      "advanced": {},
+      "class": "places",
       "extent": [
         -124.41512516186312,
         32.531136160652274,
         -114.13253581616009,
         42.009360468634725
       ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(\n  SELECT COALESCE(landuse, leisure, \"natural\", highway, amenity, tourism, military, religion, man_made, historic) AS type,\n    name, CAST(way_area as numeric)  AS area,\n    ST_PointOnSurface(way) AS way\n  FROM planet_osm_polygon\n  WHERE name IS NOT NULL\n  AND COALESCE(boundary, 'foo') <> 'administrative'\n    AND way && !bbox!\n    AND ST_IsValid(way)\n\n  UNION ALL\n\n  SELECT 'building' AS type, name, CAST(way_area as numeric)  AS area,\n    ST_PointOnSurface(way) AS way\n  FROM planet_osm_polygon\n  WHERE name IS NOT NULL\n    AND building NOT IN ('', 'no', '0', 'false')\n    AND way && !bbox!\n    AND ST_IsValid(way)\n  ORDER BY area DESC\n) AS data",
-        "key_field": "",
-        "geometry_field": "",
-        "extent_cache": "auto",
-        "extent": "-13849828.38,3833234.22,-12705175.77,5162381.7",
-        "dbname": "osm_california",
-        "host": "localhost",
-        "user": "postgres",
-        "password": "postgres",
-        "id": "landuse-labels",
-        "project": "quiet-la",
-        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-      },
       "id": "landuse-labels",
-      "class": "places",
-      "srs-name": "900913",
+      "name": "landuse-labels",
+      "properties": {
+        "cache-features": "true"
+      },
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "landuse-labels"
+      "srs-name": "900913"
     }
   ],
   "scale": 1,
   "metatile": 2,
-  "name": "Quiet LA",
-  "description": "A quiet base layer for overlaying loud data about Southern California",
   "attribution": "Los Angeles Times Data Desk",
-  "version": "0.2.5"
+  "description": "A quiet base layer for overlaying loud data about Southern California",
+  "name": "Quiet LA",
+  "version": "0.3.0"
 }
