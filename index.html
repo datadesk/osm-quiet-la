@@ -103,10 +103,15 @@
             <div id="overlay-about" class="overlay-box">
                 <div id="overlay-headline" class="overlay-section">
                     <h1>Quiet L.A.</h1>
-                    <p id="byline">A muted, open-source base layer about Southern California</a> by the Los Angeles Times Data Desk. <a href="http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/">Read all about it</a>.</p>
+                    <p id="byline">A muted, open-source base layer about Southern California</a> 
+                    by the <a href="http://datadesk.latimes.com">Los Angeles Times Data Desk</a>.</p>
                 </div>
                 <div id="overlay-search" class="overlay-section">
                     <form id="geocoder"></form>
+                </div>
+                <div id="overlay-footnotes" class="overlay-section">
+                    <p><b>ALSO:</b> <a href="http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/">Introduction</a>,
+                    <a href="https://github.com/datadesk/osm-quiet-la">Code repository</a></p>
                 </div>
             </div>
         </div>
@@ -116,7 +121,7 @@
 <script type="text/javascript">
 // Configure the basic map settings
 var mapOptions = {
-    maxZoom:15,
+    maxZoom:16,
     minZoom:8,
     maxBounds: new L.LatLngBounds(
         new L.LatLng(36.1912, -112.044),
@@ -144,9 +149,10 @@ var createLayer = function(version) {
 }
 
 // All of our releases
-var latest = createLayer("0.2.5");
+var latest = createLayer("0.3.0");
 var baseLayers = {
-    "v0.2.5": latest,
+    "v0.3.0": latest,
+    "v0.2.5": createLayer("0.2.5"),
     "v0.2.4": createLayer("0.2.4"),
     "v0.2.3": createLayer("0.2.3"),
     "v0.2.2": createLayer("0.2.2"),
@@ -198,9 +204,6 @@ $("#geocoder").geocodify({
          new google.maps.LatLng(minY,maxX),
          new google.maps.LatLng(maxY,minX)
      ),
-    width: 350,
-    height: 26,
-    fontSize: '14px',
     filterResults: function(results) {
      var filteredResults =[];
      $.each(results, function(i,val) {
