@@ -29,7 +29,7 @@ Next clone this repository, or a fork of it, to your computer. I recommend doing
 # Create the virtualenv
 $ virtualenv osm-quiet-la
 # Jump into it
-$ cd osm-quiet-let
+$ cd osm-quiet-la
 # Turn it on
 $ . bin/activate
 # Pull down this repository into a subdirectory
