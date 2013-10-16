@@ -18,7 +18,7 @@ Map { font-directory: url(./fonts); }
 @runway: #BFBEBD;
 @aerodrome: #D6D6D6;
 @building: darken(#e8e4e4,8);
-@water: #b8dee6;
+@water: #C3D5DD;
 @residential:  @land * 0.98;
 @commercial: @land * 0.97;
 @industrial: @land * 0.96;
