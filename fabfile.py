@@ -71,14 +71,13 @@ def load_osm(pbf,  postgres_user='postgres', postgres_host='localhost'):
     state = pbf.replace("-latest.osm.pbf", "")
     db = 'osm_%s' % state
     try:
-        local("sudo -u %s dropdb %s" % (postgres_user, db))
+        local("dropdb -U %s %s" % (postgres_user, db))
         print('- Dropped existing database %s' % db)
     except:
         pass
     # Create a new database
     print('- Creating new database %s' % db)
-    local('sudo -u %s createdb -U %s -T template_postgis %s' % (
-        postgres_user,
+    local('createdb -U %s -T template_postgis %s' % (
         postgres_user,
         db
     ))
@@ -86,11 +85,11 @@ def load_osm(pbf,  postgres_user='postgres', postgres_host='localhost'):
     print('- Loading OpenStreetMap data')
     local('osm2pgsql --slim --cache=500MB --drop -U %s -H %s -d %s %s' % (postgres_user, postgres_host, db, pbf))
     # Remove OSM file
-    print('Removing %s' % osm)
-    local('rm %s' % osm)
+    print('Removing %s' % pbf)
+    local('rm %s' % pbf)
 
 
-def update_osm(state='california', postgres_user='postgres', postgres_host='localhost'):
+def update_osm(state='california', postgres_user='postgres', postgres_host='localhost', skip_download=False):
     """
     Download and install the latest snapshot of the OpenStreetMap database.
     
@@ -115,7 +114,10 @@ def update_osm(state='california', postgres_user='postgres', postgres_host='loca
         $ fab update_osm:state=iowa
     
     """
-    pbf = download_osm(state)
+    if not skip_download:
+        pbf = download_osm(state)
+    else:
+        pbf = '%s-latest.osm.pbf' % state
     load_osm(pbf, postgres_user=postgres_user, postgres_host=postgres_host)
 
 
