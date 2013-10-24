@@ -1,14 +1,15 @@
 /* Fonts */
-Map { font-directory: url(./fonts); }
+Map { font-directory: url(./fonts); buffer-size: 512; }
 @sans: "BentonGothic-Medium Medium", "DejaVu Sans Condensed";
 @sans_bold: "BentonGothic-BoldCond Medium", "DejaVu Sans Condensed Bold";
 @sans_light: "BentonGothicCondTab Medium", "DejaVu Sans ExtraLight";
 @sans_italic: "BentonGothic-RegularItalic Medium", "DejaVu Sans Condensed Oblique";
+@serif_italic: "Georgia Italic";
 
 /* Land user and land cover */
 @background: #efebe7;
-@land:#efebe7;
-@forest: #cfd6c8;
+@land:#f4f2ed;
+@forest: #dee0d5;
 @grass: lighten(@forest, 5%);
 @park:lighten(@forest, 3%);
 @hospital:lighten(#EBCDDE, 7%);
@@ -33,8 +34,8 @@ Map { font-directory: url(./fonts); }
 @mexico_border: #6E6666;
 
 /* Places */
-@place_halo: #fff;
-@place_text: #757575;
+@place_halo: @land;
+@place_text: #444;
 
 /* ================================================================== */
 /* ROAD COLORS
@@ -49,28 +50,29 @@ Map { font-directory: url(./fonts); }
  *         inner fill (inline).
  */
 
-@road: gray;
+@road: gray;/*#c8c8c1*/
 @road_halo: #fff;
 @road_text: #757575;
 
-@motorway_line:     spin(darken(#e6e6d9,15),-10);
-@motorway_fill:     spin(darken(#e6e6d9,15),-10);
-@motorway_case:     lighten(#000, 5);
+/*@motorway_line:     spin(darken(#e6e6d9,15),-10);*/
+@motorway_line:     lighten(#c8c8c1, 0);
+@motorway_fill:     lighten(#c8c8c1, 0);
+@motorway_case:     lighten(#c8c8c1, 0);
 
-@trunk_line:        lighten(@road, 25);
-@trunk_fill:        lighten(@trunk_line,10%);
-@trunk_case:        @trunk_line * 0.9;
+@trunk_line:        lighten(#c8c8c1, 0);
+@trunk_fill:        lighten(#c8c8c1, 0);
+@trunk_case:        lighten(#c8c8c1, 0);
 
-@primary_line:      lighten(@road,20);
+@primary_line:      lighten(#c8c8c1, 0);
 @primary_fill:      #fff;
 @primary_case:      @primary_line * 0.9;
 
-@secondary_line:    lighten(@road,30);
+@secondary_line:    lighten(#c8c8c1, 0);
 @secondary_fill:    #fff;
 @secondary_case:    @secondary_line * 0.9;
 
-@standard_line:     lighten(@road,40);
-@standard_fill:     #fff;
+@standard_line:     lighten(#c8c8c1,0);
+@standard_fill:     #c8c8c1;
 @standard_case:     @standard_line * 0.9;
 
 @pedestrian_line:   @standard_line;
@@ -81,7 +83,7 @@ Map { font-directory: url(./fonts); }
 @cycle_fill:        #FAFAF5;
 @cycle_case:        @land;
 
-@rail_line:         #999;
+@rail_line:         #c8c8c1;
 @rail_fill:         #fff;
 @rail_case:         @land;
 
