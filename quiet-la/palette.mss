@@ -35,7 +35,7 @@ Map { font-directory: url(./fonts); buffer-size: 512; }
 
 /* Places */
 @place_halo: @land;
-@place_text: #444;
+@place_text: #757575;
 
 /* ================================================================== */
 /* ROAD COLORS
@@ -54,7 +54,7 @@ Map { font-directory: url(./fonts); buffer-size: 512; }
 @road_halo: #fff;
 @road_text: #757575;
 
-/*@motorway_line:     spin(darken(#e6e6d9,15),-10);*/
+//@motorway_line:     spin(darken(#e6e6d9,15),-10);
 @motorway_line:     lighten(#c8c8c1, 0);
 @motorway_fill:     lighten(#c8c8c1, 0);
 @motorway_case:     lighten(#c8c8c1, 0);
