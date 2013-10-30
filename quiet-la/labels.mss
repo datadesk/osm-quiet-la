@@ -98,7 +98,6 @@
   text-halo-radius:0;
   text-opacity:0.3;
   [zoom>=13][population>500] { 
-     text-opacity:0.2;
      text-allow-overlap:true;
   }
   [zoom=14]{text-size:24; text-opacity:0.12;}    
