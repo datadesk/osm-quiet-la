@@ -39,11 +39,12 @@ come in as well.
 
 /* Road width variables that are used in road & bridge styles */
 @rdz11_maj: 1.5; @rdz11_med: 0.4; @rdz11_min: 0.2;
-@rdz12_maj: 1.5; @rdz12_med: .5; @rdz12_min: 0.3;
-@rdz13_maj: 3;   @rdz13_med: 1; @rdz13_min: .1;
-@rdz14_maj: 3;   @rdz14_med: 1.3; @rdz14_min: .3;
+@rdz12_maj: 2; @rdz12_med: .5; @rdz12_min: 0.3;
+@rdz13_maj: 3.3;   @rdz13_med: 1; @rdz13_min: .15;
+@rdz14_maj: 3.4;   @rdz14_med: 1.3; @rdz14_min: .3;
 @rdz15_maj: 5;   @rdz15_med: 2;   @rdz15_min: .9;
 @rdz16_maj: 8;   @rdz16_med: 3;   @rdz16_min: 1.2;
+
 
 
 #roads-high[zoom>=11][zoom<=20],
@@ -153,9 +154,10 @@ come in as well.
     line-join: round;
   }
   [stylegroup='railway'] {
-    line-color: @land;
+    line-color: @rail_line;
     line-join: round;
     line-width: 0;
+    line-dasharray: 1,3;
   }
   /* -- widths -- */
   [zoom=14] {

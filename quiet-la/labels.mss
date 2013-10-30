@@ -91,28 +91,19 @@
   [zoom=16] {text-size:17;}
 } 
 
-#neighborhoods[zoom>=12] [zoom<15]{
-  text-face-name: @sans_light;
-  text-fill: darken(@place_text, 25%);
-  text-allow-overlap:false;
-  text-halo-fill:@land;
-  text-halo-radius:1.2;
-  [zoom=11][population>50000] {
-    text-name:"[Name]";
-    text-size:11;
+#neighborhoods[zoom>=11] [zoom<17]{
+      text-name:"[Name]";
+  text-face-name: @sans_bold;
+  text-size:12;
+  text-halo-radius:0;
+  text-opacity:0.3;
+  [zoom>=13][population>500] { 
+     text-opacity:0.2;
+     text-allow-overlap:true;
   }
-  [zoom=12][population>20000] {
-    text-name:"[Name]";
-    text-size:12;
-  }
-  [zoom=13][population>500] { 
-    text-name:"[Name]";
-    text-size:14;
-  }
-  [zoom>13]{text-name:"[Name]";}
-  [zoom=14] {text-size:15;}    
-  //[zoom=15] {text-size:17;}
-  //[zoom=16] {text-size:19;}
+  [zoom=14]{text-size:24; text-opacity:0.12;}    
+  [zoom=15] {text-size:32; text-opacity:0.12;}
+  [zoom=16] {text-size:38; text-opacity:0.1; }
 }
 
 
@@ -348,8 +339,8 @@
   text-character-spacing:.5;
   text-dy:9;
   [zoom=13] {
-    text-min-padding:50;
-    text-min-distance:20;
+    text-min-padding:10;
+    text-min-distance:120;
   }
   [zoom=14] {
     text-min-padding:45;

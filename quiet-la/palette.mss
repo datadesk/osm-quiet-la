@@ -12,7 +12,7 @@ Map { font-directory: url(./fonts); buffer-size: 512; }
 @forest: #dee0d5;
 @grass: lighten(@forest, 5%);
 @park:lighten(@forest, 3%);
-@hospital:lighten(#EBCDDE, 7%);
+@hospital:#F1E2EE;
 @school: lighten(#D9D5E3, 5%);
 @stadium: #D9CDC1;
 @beach: #ebe2cd;
