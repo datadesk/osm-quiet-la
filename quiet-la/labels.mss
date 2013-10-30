@@ -183,10 +183,11 @@
     shield-text-dy: 1;
     shield-text-dx: 0.1;
     shield-halo-radius: 0;
-    shield-min-padding: 165;
-    shield-avoid-edges: false;
-    shield-spacing:150;
-    shield-min-distance: 50;
+    shield-min-padding: 50;
+    shield-avoid-edges: true;
+    shield-spacing:250;
+    shield-min-distance: 90;
+    shield-allow-overlap: false;
     [type="US"]{
       shield-text-dx: 1;
       shield-text-dy: 0;
@@ -215,19 +216,26 @@
         [type="US"]{shield-file: url("resources/us_shield_large_wide.png");} 
       }
     }
-    [zoom<=12] {
-      shield-min-distance: 50;
+
+    [zoom=12] { 
+      shield-min-distance: 100;
     }
-    [zoom>12] { 
+    [zoom=13] { 
+      shield-min-distance: 170;
+    }
+    [zoom=14] {
+      shield-min-padding: 50;
+      shield-min-distance: 200;
+    }
+    [zoom=15] {
+      shield-min-padding: 10;
       shield-min-distance: 40;
     }
-    [zoom>=14] {
-      shield-min-padding: 150;
-      shield-min-distance: 60;
-    }
     [zoom=16] { 
-      shield-size:14;
-      shield-opacity: 0.98;
+      //shield-size:14;
+      //shield-opacity: 0.98;
+      shield-min-padding: 10;
+      shield-min-distance: 150;
     }
   }
 }
