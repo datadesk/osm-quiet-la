@@ -53,6 +53,12 @@ $ sudo apt-get install fabric
 $ sudo apt-get install osm2pgsql
 ```
 
+Finally, you have to configure the Tilemill configuration file to work with your target PostgreSQL database. You can do this by filling out the options at the top of ``configure.py`` in this directory and then running it.
+
+```bash
+$ python configure.py
+```
+
 Once that's out of the way, it might be this easy.
 
 ```bash
@@ -75,12 +81,6 @@ $ sudo -u postgres createdb -U postgres -T template_postgis osm_california
 $ osm2pgsql --slim --cache=500MB --drop -U postgres -H localhost -d osm_california california-latest.osm.pbf
 # Delete that osm file now that you don't need it anymore.
 $ rm california.osm
-```
-
-Finally, you have to configure the Tilemill configuration file to work with your PostgreSQL database. You can do this by filling out the options at the top of ``configure.py`` in this directory and then running it.
-
-```bash
-$ python configure.py
 ```
 
 ![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.3.0/sfvalley.png)
