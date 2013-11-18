@@ -65,14 +65,14 @@ Though if you're not on Ubuntu you might have to tweak each step a little. Crack
 
 ```bash
 # Download and unzip the OSM extract for your state. I use Geofabrik as a source because they update frequently.
-$ curl -O http://download.geofabrik.de/openstreetmap/north-america/us/california.osm.bz2
+$ curl -O http://download.geofabrik.de/north-america/us/california-latest.osm.pbf
 $ bunzip2 ./california.osm.bz2
 # Create a new PostgreSQL database to store the data. Substitute your postgres user and state.
 $ sudo -u postgres createdb -U postgres -T template_postgis osm_california
 # Use osm2pgsql to load the OpenStreetMap data into the database.
 # The location of the default.style file can be different depending on the platform.
 # This is where it shows up in the latest Ubuntu distro, but you might need to dig up its path on your system.
-$ osm2pgsql -U postgres -d osm_california -S /usr/share/osm2pgsql/default.style california.osm
+$ osm2pgsql --slim --cache=500MB --drop -U postgres -H localhost -d osm_california california-latest.osm.pbf
 # Delete that osm file now that you don't need it anymore.
 $ rm california.osm
 ```
