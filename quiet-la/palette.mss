@@ -55,7 +55,7 @@ Map { font-directory: url(./fonts); buffer-size: 512; }
 @road_text: #757575;
 
 //@motorway_line:     spin(darken(#e6e6d9,15),-10);
-@motorway_line:     #B7B8AE;
+@motorway_line:     #BABAB1;
 @trunk_line:        @road;
 @primary_line:      @road;
 @secondary_line:    @road;
