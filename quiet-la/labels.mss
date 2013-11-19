@@ -45,6 +45,7 @@
   text-name:"[Name]";
   text-face-name: @sans;
   text-wrap-width: 45;
+  [Name='Angeles Forest'] {text-name:"'Angeles National Forest'";}
   [zoom=9] {
     text-size:12;
   }
@@ -143,7 +144,6 @@
     [type='sports_center'][zoom>=10],
     [type='stadium'][zoom>=10]{
       text-fill: @stadium * 0.6;
-      
     }
     [type='water'][zoom>=10] {
       text-fill: @water * 0.6;
