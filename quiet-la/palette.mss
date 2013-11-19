@@ -50,29 +50,18 @@ Map { font-directory: url(./fonts); buffer-size: 512; }
  *         inner fill (inline).
  */
 
-@road: gray;/*#c8c8c1*/
+@road: #c8c8c1;/*#c8c8c1*/
 @road_halo: #fff;
 @road_text: #757575;
 
 //@motorway_line:     spin(darken(#e6e6d9,15),-10);
-@motorway_line:     lighten(#c8c8c1, 0);
-@motorway_fill:     lighten(#c8c8c1, 0);
-@motorway_case:     lighten(#c8c8c1, 0);
+@motorway_line:     #B7B8AE;
+@trunk_line:        @road;
+@primary_line:      @road;
+@secondary_line:    @road;
 
-@trunk_line:        lighten(#c8c8c1, 0);
-@trunk_fill:        lighten(#c8c8c1, 0);
-@trunk_case:        lighten(#c8c8c1, 0);
-
-@primary_line:      lighten(#c8c8c1, 0);
-@primary_fill:      #fff;
-@primary_case:      @primary_line * 0.9;
-
-@secondary_line:    lighten(#c8c8c1, 0);
-@secondary_fill:    #fff;
-@secondary_case:    @secondary_line * 0.9;
-
-@standard_line:     lighten(#c8c8c1,0);
-@standard_fill:     #c8c8c1;
+@standard_line:     @road;
+@standard_fill:     @road;
 @standard_case:     @standard_line * 0.9;
 
 @pedestrian_line:   @standard_line;
