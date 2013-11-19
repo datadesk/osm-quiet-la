@@ -53,12 +53,12 @@
     text-wrap-width: 60;
   }
   [zoom=11] {
-    text-size:13;
+    text-size:16;
     text-wrap-width: 60;
   }
 }
 
-#census-places[zoom>9] {
+#census-places[zoom>10] {
   text-face-name: @sans;
   text-fill: @place_text;
   [name10='Los Angeles'] {text-name:"''";}
@@ -75,7 +75,7 @@
   [zoom=12][pop100>10000] {
     text-name:"[name10]";
     [name10='Los Angeles'] {text-name:"''";}
-    text-size:13;
+    text-size:14;
   }
   [zoom=13][pop100>500] {
     text-name:"[name10]";
@@ -94,11 +94,13 @@
 #neighborhoods[zoom>=11] [zoom<17]{
       text-name:"[Name]";
   text-face-name: @sans_bold;
-  text-size:12;
+  text-size:11;
   text-halo-radius:0;
-  text-opacity:0.3;
+  text-opacity:0.4;
   [zoom>=13][population>500] { 
-     text-allow-overlap:true;
+    text-allow-overlap:true;
+    text-size:14;
+    text-opacity:0.4;
   }
   [zoom=14]{text-size:24; text-opacity:0.12;}    
   [zoom=15] {text-size:32; text-opacity:0.12;}
@@ -110,6 +112,7 @@
   // Bring in labels gradually as one zooms in, bases on polygon area
   [zoom=10][area>102400000],
   [zoom=11][area>25600000],
+  [zoom=12][area>5000000],
   [zoom=13][area>1600000],
   [zoom=14][area>320000],
   [zoom=15][area>30000],
@@ -140,15 +143,22 @@
     [type='sports_center'][zoom>=10],
     [type='stadium'][zoom>=10]{
       text-fill: @stadium * 0.6;
+      
+    }
+    [type='water'][zoom>=10] {
+      text-fill: @water * 0.6;
+      text-face-name:@serif_italic;
+    }
+    [type='reservoir'][zoom>=10][zoom<=14] {
+      text-fill: @water * 0.6;
+      text-face-name:@serif_italic;
     }
     [type='college'][zoom>=10],
     [type='school'][zoom>=10],
     [type='university'][zoom>=10] {
       text-fill: @school * 0.6;
     }
-    [type='water'][zoom>=10] {
-      text-fill: @water * 0.6;
-    }
+    
     [type='aerodrome'][zoom>=10] {
       text-fill: @aerodrome * 0.6;
     }
@@ -240,7 +250,7 @@
 }
 
 #waterway-labels
-[zoom>=13] {
+[zoom>=15] {
   text-face-name:@serif_italic;
   text-name:"[name]";
   text-size: 11px;
