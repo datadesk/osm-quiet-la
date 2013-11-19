@@ -101,9 +101,9 @@
   [zoom>=13][population>500] { 
     text-allow-overlap:true;
     text-size:14;
-    text-opacity:0.4;
+    text-opacity:0.2;
   }
-  [zoom=14]{text-size:24; text-opacity:0.12;}    
+  [zoom=14]{text-size:24; text-opacity:0.16;}    
   [zoom=15] {text-size:32; text-opacity:0.12;}
   [zoom=16] {text-size:38; text-opacity:0.1; }
 }
@@ -391,9 +391,11 @@
   }
   [zoom=15] {
       text-min-padding:10;
+    text-size:12;
   }
   [zoom=16] {
       text-min-padding:10;
+    text-size:13;
   }
  }
 #mainroad-labels[type='tertiary'][zoom>12] {
@@ -419,8 +421,7 @@
       text-min-padding:120;
   }
   [zoom=16] {
-    text-fill:@road_text;
-    text-size:12.5;
+    text-fill: lighten(@road_text,15%);
     text-min-distance:200;
   }
 }
