@@ -1,4 +1,4 @@
-Map { background-color: @background; }
+Map { background-color: @background;}
 
 /* WATER */
 #ocean, #water-polygons {

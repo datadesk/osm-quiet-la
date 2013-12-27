@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiet LA</title>
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css" />
+    <link rel="stylesheet" href="http://graphics.latimes.com/static/css/jquery.geocodify.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.ie.css"  /><![endif]-->
+    <style type="text/css">
+        /* RESET */
+        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+        /* APP */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow:hidden;
+        }
+        #map-canvas {
+            width: 100%;
+            height: 100%;
+            position:absolute;
+        }
+        body {
+            margin:0;
+            padding: 0;
+            font-family: Georgia, serif;
+            font-size:14px;
+        }
+        .bold {
+            font-family: Georgia, serif;
+        }
+        h1 {
+            font-family: Georgia, serif;
+            margin: 0;
+            padding:0;
+            font-size:36px;
+            height:36px;
+            min-height:36px;
+            line-height:36px;
+            width:100%;
+            font-weight:normal;
+        }
+        h4 {
+            margin: 0 0 5px 0;
+            padding: 0;
+            font-weight:normal;
+            font-size:12px;
+        }
+        p {
+            margin:0;
+            padding:5px 0;
+        }
+        #map-container {
+            width:100%;
+            height:100%;
+        }
+        #map-canvas {
+            position: relative;
+        }
+        #geocoder-button {
+            height:28px;
+        }
+        #byline {
+            font-size:16px;
+            line-height:20px;
+        }
+        #overlay {
+            position: absolute;
+            top: 2px;
+            left:50px;
+            z-index:1001;
+        }
+        .overlay-box {
+            z-index:1000;
+            width: 450px;
+            background-color:white;
+            margin:10px 0 20px 0;
+            padding: 10px;
+            box-shadow: 0 0 5px #BBB;
+        }
+        .overlay-section {
+            padding: 5px;
+            position: relative;
+        }
+        #overlay-description p {
+            width: 420px;
+            text-align: justify;
+            line-height:130%;
+        }
+        #geocoder-button {
+            height:28px;
+        }
+    </style>
+    <script type="text/javascript" src='http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js'></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://graphics.latimes.com/static/js/jquery.geocodify-0.2.js"></script>
+</head>
+<body>
+    <div id="map-container">
+        <div id="overlay">
+            <div id="overlay-about" class="overlay-box">
+                <div id="overlay-headline" class="overlay-section">
+                    <h1>Quiet L.A.</h1>
+                    <p id="byline">A muted, open-source base layer about Southern California</a> 
+                    by the <a href="http://datadesk.latimes.com">Los Angeles Times Data Desk</a>.</p>
+                </div>
+                <div id="overlay-search" class="overlay-section">
+                    <form id="geocoder"></form>
+                </div>
+                <div id="overlay-footnotes" class="overlay-section">
+                    <p><b>ALSO:</b> <a href="http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/">Introduction</a>,
+                    <a href="https://github.com/datadesk/osm-quiet-la">Code repository</a></p>
+                </div>
+            </div>
+        </div>
+        <div id="map-canvas" style="width:100%; height:100%"></div>
+    </div>
+    
+<script type="text/javascript">
+// Configure the basic map settings
+var mapOptions = {
+    maxZoom:16,
+    minZoom:8,
+    maxBounds: new L.LatLngBounds(
+        new L.LatLng(36.1912, -112.044),
+        new L.LatLng(31.5037, -122.3272)
+    )
+};
+var map = new L.Map('map-canvas', mapOptions);
+map.setView(new L.LatLng(34.05, -118.6), 9);
+
+// Set default layer options
+var layerOptions = {
+    attribution: "Map data (c) <a href='http://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='http://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>",
+    subdomains: [
+        'tiles1',
+        'tiles2',
+        'tiles3',
+        'tiles4'
+    ]
+}
+
+// Create a layer based on the version you submit
+var createLayer = function(version) {
+    var url = "http://{s}.latimes.com/quiet-la-" + version + "/{z}/{x}/{y}.png";
+    return new L.TileLayer(url, layerOptions);
+}
+
+// The test layer from TileMill's server
+var myIP = "{{ ip }}";
+var latest = new L.TileLayer('http://' + myIP + ':20008/tile/quiet-la/{z}/{x}/{y}.png');
+
+// All of our releases
+var baseLayers = {
+    "Len's test": latest,
+    "v0.3.0": createLayer("0.3.0"),
+    "v0.2.5": createLayer("0.2.5"),
+    "v0.2.4": createLayer("0.2.4"),
+    "v0.2.3": createLayer("0.2.3"),
+    "v0.2.2": createLayer("0.2.2"),
+    "v0.2.1": createLayer("0.2.1")
+};
+
+// Put the most recent one on the map
+map.addLayer(latest);
+
+// Add the layer control
+L.control.layers(baseLayers, {}, {collapsed:false}).addTo(map);
+</script>
+<script type="text/javascript">
+// GEOCODIFY
+var searchMarker;
+var searchIcon = L.Icon.extend({
+    options: {
+        iconUrl: "http://graphics.latimes.com/static/img/how-fast-is-lafd/searchmarker.png",
+        iconSize: new L.Point(16, 27),
+        iconAnchor: new L.Point(8, 13),
+        shadowSize: new L.Point(25, 32),
+        popupAnchor: new L.Point(0, 5)
+    }
+});
+var maxY = 35.3578;
+var minY = 32.4867;
+var minX = -120.9814;
+var maxX = -114.071;
+
+$("#geocoder").geocodify({
+    onSelect: function (result) { 
+        // Extract the location from the geocoder result
+        var location = result.geometry.location;
+        // Center the map on the result, offset a litte because of our big overlays
+        map.setView(new L.LatLng(location.lat(), location.lng()), 13);
+        // Create a popup on the point
+        if (searchMarker) {
+            map.removeLayer(searchMarker);
+        }
+        searchMarker = L.marker([location.lat(), location.lng()], {
+            clickable: false,
+            icon: new searchIcon()
+        })
+        searchMarker.addTo(map)
+    },
+    initialText: "Enter an address in Southern California",
+    regionBias: 'US',
+    viewportBias: new google.maps.LatLngBounds(
+         new google.maps.LatLng(minY,maxX),
+         new google.maps.LatLng(maxY,minX)
+     ),
+    filterResults: function(results) {
+     var filteredResults =[];
+     $.each(results, function(i,val) {
+         var location = val.geometry.location;
+         if (location.lat() > minY && location.lat() < maxY) {
+             if (location.lng() > minX && location.lng() < maxX) {
+                 filteredResults.push(val);
+            }
+         }
+     });
+     return filteredResults;
+    }
+});
+</script>
+<script type="text/javascript">(function(a){var b=function(){var b=a.documentMode;return"onhashchange"in a&&(b===undefined||b>7)}();L.Hash=function(a){this.onHashChange=L.Util.bind(this.onHashChange,this);if(a){this.init(a)}};L.Hash.prototype={map:null,lastHash:null,parseHash:function(a){if(a.indexOf("#")==0){a=a.substr(1)}var b=a.split("/");if(b.length==3){var c=parseInt(b[0],10),d=parseFloat(b[1]),e=parseFloat(b[2]);if(isNaN(c)||isNaN(d)||isNaN(e)){return false}else{return{center:new L.LatLng(d,e),zoom:c}}}else{return false}},formatHash:function(a){var b=a.getCenter(),c=a.getZoom(),d=Math.max(0,Math.ceil(Math.log(c)/Math.LN2));return"#"+[c,b.lat.toFixed(d),b.lng.toFixed(d)].join("/")},init:function(a){this.map=a;this.map.on("moveend",this.onMapMove,this);this.lastHash=null;this.onHashChange();if(!this.isListening){this.startListening()}},remove:function(){this.map=null;if(this.isListening){this.stopListening()}},onMapMove:function(a){if(this.movingMap||this.map.getZoom()===0){return false}var b=this.formatHash(this.map);if(this.lastHash!=b){location.replace(b);this.lastHash=b}},movingMap:false,update:function(){var a=location.hash;if(a===this.lastHash){return}var b=this.parseHash(a);if(b){this.movingMap=true;this.map.setView(b.center,b.zoom);this.movingMap=false}else{this.onMapMove(this.map)}},changeDefer:100,changeTimeout:null,onHashChange:function(){if(!this.changeTimeout){var a=this;this.changeTimeout=setTimeout(function(){a.update();a.changeTimeout=null},this.changeDefer)}},isListening:false,hashChangeInterval:null,startListening:function(){if(b){L.DomEvent.addListener(a,"hashchange",this.onHashChange)}else{clearInterval(this.hashChangeInterval);this.hashChangeInterval=setInterval(this.onHashChange,50)}this.isListening=true},stopListening:function(){if(b){L.DomEvent.removeListener(a,"hashchange",this.onHashChange)}else{clearInterval(this.hashChangeInterval)}this.isListening=false}}})(window)</script>
+<script type="text/javascript">var hash = new L.Hash(); hash.init(map);</script>
+
+</body>
+</html>
+
+
