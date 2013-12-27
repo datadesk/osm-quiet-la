@@ -5,7 +5,7 @@ from flask import render_template
 @app.route("/")
 def demo_map():
     return render_template("demo.html",
-        ip="172.24.40.89"
+        ip="172.24.40.89" # <-- Your local IP goes here
     )
 
 if __name__ == "__main__":
