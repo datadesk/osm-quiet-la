@@ -1,6 +1,6 @@
 /* For all different types of places that carry
    the class */
-.places {
+.places{
   text-name: "";
   text-face-name: @sans;
   text-fill: @place_text;
@@ -8,39 +8,28 @@
   text-line-spacing: 1;
   text-placement: interior;
   text-align: center;
-  text-halo-radius: 0;
+  text-halo-fill: @place_halo;
+  text-halo-radius: 1;
   text-size: 11;
   text-min-distance:10;
 }
 
 /* California counties */
-#counties[zoom>=8][zoom<14] {
+#counties[zoom>=8][zoom<14]{
   text-name:"[NAMELSAD10]";
   text-face-name: @sans;
   text-transform: uppercase;
   text-character-spacing: 2;
   text-size:14;
-  [zoom=8] {
-    text-size:12.5;
-  }
-  [zoom=9] {
-    text-size:13;
-  }
-  [zoom=10] {
-    text-size:14;
-  }
-  [zoom=11] {
-    text-size:15;
-  }
-  [zoom=12] {
-    text-size:14;
-  }
-  [zoom>=13] {
-    text-size:16;
-  }
+  [zoom=8]{text-size:12.5;}
+  [zoom=9]{text-size:13;}
+  [zoom=10]{text-size:14;}
+  [zoom=11]{text-size:15;}
+  [zoom=12]{text-size:14;}
+  [zoom>=13]{ text-size:16;}
   // Skip LA county since we will use regions there instead.
-  [zoom>8] {
-    [NAMELSAD10='Los Angeles County'] {text-name:"''";}
+  [zoom>8]{
+    [NAMELSAD10='Los Angeles County']{text-name:"''";}
   }
 }
 
@@ -49,32 +38,41 @@
   text-name:"[Name]";
   text-face-name: @sans;
   text-wrap-width: 45;
-  [zoom=9] {
+  [zoom=9]{
     text-size:12;
   }
-  [zoom=10] {
+  [zoom=10]{
     text-size:13;
     text-wrap-width: 60;
   }
-  [zoom=11] {
+  [zoom=11]{
     text-size:13;
     text-wrap-width: 60;
   }
 }
 
 /* L.A. County neighborhoods defined by the Data Desk */
-#neighborhoods[zoom>=11] [zoom<17]{
-      text-name:"[Name]";
-  text-face-name: @sans_bold;
-  text-size:12;
-  text-halo-radius:0;
-  text-opacity:0.3;
-  [zoom>=13][population>500] { 
-     text-allow-overlap:true;
+#neighborhoods[zoom>=11][zoom<17]{
+  text-face-name: @sans;
+  [zoom=11][population>60000]{
+    text-name:"[Name]";
+    text-size:11;
   }
-  [zoom=14]{text-size:24; text-opacity:0.12;}    
-  [zoom=15] {text-size:32; text-opacity:0.12;}
-  [zoom=16] {text-size:38; text-opacity:0.1; }
+  [zoom=12][population>20000]{
+    text-name:"[Name]";
+    text-size:12;
+  }
+  [zoom=13][population>1000]{
+    text-name:"[Name]";
+    text-size:14;
+  }
+  [zoom>13]{
+    text-name:"[Name]";
+	text-allow-overlap: true;
+  }
+  [zoom=14]{text-size: 15;}    
+  [zoom=15]{text-size: 18;}
+  [zoom=16]{text-size: 21;}
 }
 
 /* Census-designated places (with some exceptions) 
@@ -82,34 +80,35 @@
 #census-places[zoom>9] {
   text-face-name: @sans;
   text-fill: @place_text;
-  [name10='Los Angeles'] {text-name:"''";}
+  [name10='Los Angeles']{text-name:"''";}
   [zoom=10][pop100>80000]{
     text-name:"[name10]";
-    [name10='Los Angeles'] {text-name:"''";}
+    [name10='Los Angeles']{text-name:"''";}
     text-size:12;
   }
-  [zoom=11][pop100>30000] {
+  [zoom=11][pop100>30000]{
     text-name:"[name10]";
-    [name10='Los Angeles'] {text-name:"''";}
+    [name10='Los Angeles']{text-name:"''";}
     text-size:12;
   }
-  [zoom=12][pop100>10000] {
+  [zoom=12][pop100>10000]{
     text-name:"[name10]";
-    [name10='Los Angeles'] {text-name:"''";}
+    [name10='Los Angeles']{text-name:"''";}
     text-size:13;
   }
-  [zoom=13][pop100>500] {
+  [zoom=13][pop100>500]{
     text-name:"[name10]";
-    [name10='Los Angeles'] {text-name:"''";}
+    [name10='Los Angeles']{text-name:"''";}
     text-size:15;
   }
   [zoom>13]{
     text-name:"[name10]";
-    [name10='Los Angeles'] {text-name:"''";}
+    text-allow-overlap: true;
+    [name10='Los Angeles']{text-name:"''";}
   }
-  [zoom=14] {text-size:16;}
-  [zoom=15] {text-size:16;}
-  [zoom=16] {text-size:17;}
+  [zoom=14]{text-size:16;}
+  [zoom=15]{text-size:20;}
+  [zoom=16]{text-size:23;}
 } 
 
 /* All different kinds of places from the OSM database */
@@ -120,25 +119,23 @@
   [zoom=13][area>1600000],
   [zoom=14][area>320000],
   [zoom=15][area>30000],
-  [zoom=16][area>8000], {
+  [zoom=16][area>8000]{
     text-name: "[name]";
     text-size: 12;
-    [zoom=16] {
-      text-size: 12;
-    }
+    [zoom=16]{text-size: 12;}
     text-placement: point;
     text-face-name: @sans_italic;
     text-fill: lighten(@place_text, 15);
     text-size: 12;
     [type='park'][zoom>=10],
     [type='golf_course'][zoom>=10],
-    [type='cemetery'][zoom>=10] {
+    [type='cemetery'][zoom>=10]{
       text-fill: @park * 0.6;
       // Skip these since they are also neighborhood names
       [name='Griffith Park'] {text-name:"''";}
       [name='Elysian Park'] {text-name:"''";}
     }
-    [type='hospital'][zoom>=10] {
+    [type='hospital'][zoom>=10]{
       text-fill: @hospital * 0.6;
     }
     [type='arena'][zoom>=10],
@@ -148,26 +145,26 @@
     }
     [type='college'][zoom>=10],
     [type='school'][zoom>=10],
-    [type='university'][zoom>=10] {
+    [type='university'][zoom>=10]{
       text-fill: @school * 0.6;
     }
-    [type='water'][zoom>=10] {
+    [type='water'][zoom>=10]{
       text-fill: @water * 0.6;
     }
-    [type='aerodrome'][zoom>=10] {
+    [type='aerodrome'][zoom>=10]{
       text-fill: @aerodrome * 0.6;
     }
-    [type='place_of_worship'][zoom>=10] {
+    [type='place_of_worship'][zoom>=10]{
       text-fill: @place_of_worship * 0.6;
     }
   }
-  [zoom=15][area>=1600000] {
+  [zoom=15][area>=1600000]{
     text-name: "[name]";
     text-size: 13;
     text-wrap-width: 60;
     text-character-spacing: 1;
   }  
-  [zoom=16][area>=1200000] {
+  [zoom=16][area>=1200000]{
     text-name: "[name]";
     text-size: 14;
     text-wrap-width: 60;
@@ -176,7 +173,7 @@
 }
 
 /* Water */
-#waterway-labels[zoom>=13] {
+#waterway-labels[zoom>=13]{
   text-face-name:@serif_italic;
   text-name:"[name]";
   text-size: 11px;
@@ -186,20 +183,13 @@
   text-min-distance:0;
   text-wrap-width: 30;
   text-line-spacing: 1;
-  [source='line'] {
+  [source='line']{
     text-placement:line;
     text-dy:9;
   }
-  [source='polygon'] {
-    text-placement:interior; 
-  }
-
-  [zoom=14] {
-    text-fill: @place_text;
-  }
-  [zoom=15] {
-    text-fill: @place_text;
-  }
+  [source='polygon']{text-placement:interior;}
+  [zoom=14]{text-fill: @place_text;}
+  [zoom=15] {text-fill: @place_text;}
   [zoom=16] {
     text-size:13;
     text-fill: @place_text;
@@ -226,7 +216,7 @@
       shield-text-dx: 1;
       shield-text-dy: 0;
     }
-    [type="SR"] {shield-fill: #333;}
+    [type="SR"]{shield-fill: #333;}
     [zoom>10][zoom<16]{
       shield-file: url("resources/interstate_shield_small.png");
       [type="CA"],[type="SR"]{shield-file: url("resources/ca_shield_small.png");}
@@ -250,24 +240,21 @@
         [type="US"]{shield-file: url("resources/us_shield_large_wide.png");} 
       }
     }
-
     [zoom=12] { 
       shield-min-distance: 100;
     }
-    [zoom=13] { 
+    [zoom=13]{ 
       shield-min-distance: 170;
     }
-    [zoom=14] {
+    [zoom=14]{
       shield-min-padding: 50;
       shield-min-distance: 200;
     }
-    [zoom=15] {
+    [zoom=15]{
       shield-min-padding: 10;
       shield-min-distance: 40;
     }
-    [zoom=16] { 
-      //shield-size:14;
-      //shield-opacity: 0.98;
+    [zoom=16]{ 
       shield-min-padding: 10;
       shield-min-distance: 150;
     }
@@ -275,22 +262,20 @@
 }
 
 /* Roads */
-#motorway-labels[type='motorway'][zoom>12] {
+#motorway-labels[type='motorway'][zoom>12]{
   text-face-name:@sans;
   text-name:"[name]";
   text-fill:@road_text;
-  //text-min-padding: 45;
 }
 
-#motorway-labels[type='trunk'][zoom>12] {
+#motorway-labels[type='trunk'][zoom>12]{
   text-face-name:@sans;
   text-name:"[name]";
   text-fill:@road_text;
-  //text-min-padding: 45;
 }
 
 #motorway-labels[type='motorway'][zoom>12],
-#motorway-labels[type='trunk'][zoom>12] {
+#motorway-labels[type='trunk'][zoom>12]{
   text-placement:line;
   text-halo-radius:0;
   text-character-spacing:.5;
@@ -298,27 +283,27 @@
   text-size:12;
   text-avoid-edges: false;
   text-dy:12;
-  [zoom=11] {
+  [zoom=11]{
     text-min-distance:70;
     text-size:12;
     text-dy:12;
   }
-  [zoom=12] {
+  [zoom=12]{
     text-min-distance:80;
     text-size:12;
     text-dy:12;
   }
-  [zoom=13] {
+  [zoom=13]{
     text-min-distance:100;
     text-size:13;
     text-dy:14;
   }
-  [zoom=14] {
+  [zoom=14]{
     text-min-distance:120;
     text-size:14;
     text-dy:14;
   }
-  [zoom=15] {
+  [zoom=15]{
     text-face-name:@sans_bold;
     text-fill: #fff;
 	text-halo-fill: #bfbebd;
@@ -328,7 +313,7 @@
     text-size:15;
     text-dy:0;
   }
-  [zoom=16] {
+  [zoom=16]{
     text-face-name:@sans_bold;
     text-fill: #fff;
 	text-halo-fill: #bfbebd;
@@ -350,20 +335,16 @@
   text-size:11;
   text-character-spacing:.5;
   text-dy:9;
-  [zoom=13] {
+  [zoom=13]{
     text-min-padding:10;
     text-min-distance:120;
   }
-  [zoom=14] {
+  [zoom=14]{
     text-min-padding:45;
     text-min-distance:20;
   }
-  [zoom=15] {
-      text-min-padding:10;
-  }
-  [zoom=16] {
-      text-min-padding:10;
-  }
+  [zoom=15]{text-min-padding:10;}
+  [zoom=16] {text-min-padding:10;}
 }
 
 #mainroad-labels[type='secondary'][zoom>12]{
@@ -374,23 +355,18 @@
   text-halo-fill:@land;
   text-halo-radius:1.3;
   text-size:11;
-  //text-min-padding:5;
   text-character-spacing:.5;
   text-dy:9;
-  [zoom=13] {
+  [zoom=13]{
     text-min-padding:60;
     text-min-distance:20;
   }
-  [zoom=14] {
+  [zoom=14]{
     text-min-padding:58;
     text-min-distance:20;
   }
-  [zoom=15] {
-      text-min-padding:10;
-  }
-  [zoom=16] {
-      text-min-padding:10;
-  }
+  [zoom=15] {text-min-padding:10;}
+  [zoom=16] {text-min-padding:10;}
  }
 
 #mainroad-labels[type='tertiary'][zoom>12] {
@@ -400,22 +376,19 @@
   text-fill:lighten(@road_text,15%);
   text-halo-fill:@land;
   text-halo-radius:1.3;
-  //text-min-distance:120;
   text-size:12;
   text-character-spacing:.5;
   text-dy:9;
-  [zoom=13] {
+  [zoom=13]{
     text-min-padding:60;
     text-min-distance:20;
   }
-  [zoom=14] {
+  [zoom=14]{
     text-min-padding:60;
     text-min-distance:20;
   }
-  [zoom=15] {
-      text-min-padding:120;
-  }
-  [zoom=16] {
+  [zoom=15]{text-min-padding:120;}
+  [zoom=16]{
     text-fill:@road_text;
     text-size:12.5;
     text-min-distance:200;
@@ -433,9 +406,8 @@
   text-halo-radius:1.2;
   text-dy:7;
   text-min-padding:5;
-  [zoom=16] {
+  [zoom=16]{
     text-min-distance:100;
-    //text-min-padding:15;
     text-dy:9;
     text-halo-fill:@land;
   	text-halo-radius:1.3;
