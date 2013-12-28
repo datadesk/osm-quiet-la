@@ -2,8 +2,6 @@
    ROAD & RAIL LINES
 /* ================================================================== */
 
-
-
 #roads-medium[zoom>=8][zoom<=10] {
   [type='motorway'],
   [type='motorway_link'] {

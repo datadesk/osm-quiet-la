@@ -1,4 +1,8 @@
-Map { background-color: @background;}
+Map {
+   background-color: @background;
+  font-directory: url(./fonts); 
+  //buffer-size: 512;
+}
 
 /* WATER */
 #ocean, #water-polygons {

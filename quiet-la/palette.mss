@@ -1,5 +1,4 @@
 /* Fonts */
-Map { font-directory: url(./fonts); buffer-size: 512; }
 @sans: "BentonGothic-Medium Medium", "DejaVu Sans Condensed";
 @sans_bold: "BentonGothic-BoldCond Medium", "DejaVu Sans Condensed Bold";
 @sans_light: "BentonGothicCondTab Medium", "DejaVu Sans ExtraLight";
