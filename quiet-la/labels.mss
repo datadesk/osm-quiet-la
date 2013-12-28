@@ -1,3 +1,5 @@
+/* For all different types of places that carry
+   the class */
 .places {
   text-name: "";
   text-face-name: @sans;
@@ -11,6 +13,7 @@
   text-min-distance:10;
 }
 
+/* California counties */
 #counties[zoom>=8][zoom<14] {
   text-name:"[NAMELSAD10]";
   text-face-name: @sans;
@@ -41,6 +44,7 @@
   }
 }
 
+/* L.A. County regions defined by the Data Desk  */
 #regions[zoom>=9][zoom<12] {
   text-name:"[Name]";
   text-face-name: @sans;
@@ -58,6 +62,23 @@
   }
 }
 
+/* L.A. County neighborhoods defined by the Data Desk */
+#neighborhoods[zoom>=11] [zoom<17]{
+      text-name:"[Name]";
+  text-face-name: @sans_bold;
+  text-size:12;
+  text-halo-radius:0;
+  text-opacity:0.3;
+  [zoom>=13][population>500] { 
+     text-allow-overlap:true;
+  }
+  [zoom=14]{text-size:24; text-opacity:0.12;}    
+  [zoom=15] {text-size:32; text-opacity:0.12;}
+  [zoom=16] {text-size:38; text-opacity:0.1; }
+}
+
+/* Census-designated places (with some exceptions) 
+   from the U.S. government */
 #census-places[zoom>9] {
   text-face-name: @sans;
   text-fill: @place_text;
@@ -91,21 +112,7 @@
   [zoom=16] {text-size:17;}
 } 
 
-#neighborhoods[zoom>=11] [zoom<17]{
-      text-name:"[Name]";
-  text-face-name: @sans_bold;
-  text-size:12;
-  text-halo-radius:0;
-  text-opacity:0.3;
-  [zoom>=13][population>500] { 
-     text-allow-overlap:true;
-  }
-  [zoom=14]{text-size:24; text-opacity:0.12;}    
-  [zoom=15] {text-size:32; text-opacity:0.12;}
-  [zoom=16] {text-size:38; text-opacity:0.1; }
-}
-
-
+/* All different kinds of places from the OSM database */
 #landuse-labels {
   // Bring in labels gradually as one zooms in, bases on polygon area
   [zoom=10][area>102400000],
@@ -119,8 +126,6 @@
     [zoom=16] {
       text-size: 12;
     }
-    
-    //text-min-distance:2;
     text-placement: point;
     text-face-name: @sans_italic;
     text-fill: lighten(@place_text, 15);
@@ -170,8 +175,38 @@
   }  
 }
 
+/* Water */
+#waterway-labels[zoom>=13] {
+  text-face-name:@serif_italic;
+  text-name:"[name]";
+  text-size: 11px;
+  text-fill: lighten(@place_text, 10);
+  text-halo-radius: 0;
+  text-halo-fill: @place_halo;
+  text-min-distance:0;
+  text-wrap-width: 30;
+  text-line-spacing: 1;
+  [source='line'] {
+    text-placement:line;
+    text-dy:9;
+  }
+  [source='polygon'] {
+    text-placement:interior; 
+  }
 
-/* Roads */
+  [zoom=14] {
+    text-fill: @place_text;
+  }
+  [zoom=15] {
+    text-fill: @place_text;
+  }
+  [zoom=16] {
+    text-size:13;
+    text-fill: @place_text;
+  }
+}
+
+/* Shields */
 .shield[zoom>10][ref_len<=3] {
   [highway='motorway'] {
     shield-face-name: @sans;
@@ -239,37 +274,7 @@
   }
 }
 
-#waterway-labels
-[zoom>=13] {
-  text-face-name:@serif_italic;
-  text-name:"[name]";
-  text-size: 11px;
-  text-fill: lighten(@place_text, 10);
-  text-halo-radius: 0;
-  text-halo-fill: @place_halo;
-  text-min-distance:0;
-  text-wrap-width: 30;
-  text-line-spacing: 1;
-  [source='line'] {
-    text-placement:line;
-    text-dy:9;
-  }
-  [source='polygon'] {
-    text-placement:interior; 
-  }
-
-  [zoom=14] {
-    text-fill: @place_text;
-  }
-  [zoom=15] {
-    text-fill: @place_text;
-  }
-  [zoom=16] {
-    text-size:13;
-    text-fill: @place_text;
-  }
-}
-
+/* Roads */
 #motorway-labels[type='motorway'][zoom>12] {
   text-face-name:@sans;
   text-name:"[name]";
@@ -360,6 +365,7 @@
       text-min-padding:10;
   }
 }
+
 #mainroad-labels[type='secondary'][zoom>12]{
   text-name:'[name]';
   text-face-name:@sans;
@@ -386,6 +392,7 @@
       text-min-padding:10;
   }
  }
+
 #mainroad-labels[type='tertiary'][zoom>12] {
   text-name:'[name]';
   text-face-name:@sans;

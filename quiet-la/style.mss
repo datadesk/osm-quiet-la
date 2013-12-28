@@ -4,7 +4,7 @@ Map {
   //buffer-size: 512;
 }
 
-/* WATER */
+/* Water */
 #ocean, #water-polygons {
   polygon-fill:@water;
   polygon-gamma:0.8;
@@ -53,8 +53,8 @@ Map {
   }
 }
 
+/* Borders */
 #county-borders {
-  // Should they go underneath or over the roads, lakes, etc.?
   line-color:@county_border; 
   line-cap: round;
   line-dasharray: 2,5;
@@ -97,7 +97,7 @@ Map {
   [zoom=16] {line-width:1.4;}
 }
 
-/* LAND USE */
+/* Land use fills */
 #landuse {
   [type='arena'] { polygon-fill: @stadium; }
   [type='beach'] { polygon-fill: @beach; }
@@ -131,7 +131,7 @@ Map {
   [type='village_green'] { polygon-fill: @park; }
 }
 
-/* BUILDINGS */
+/* Buildings */
 /* Transparent buildings account for situations where routes go
    in or under them */
 .building[zoom>11][zoom<17] {
