@@ -1,5 +1,5 @@
 Map{
-   background-color: @background;
+  background-color: @background;
   font-directory: url(./fonts); 
   //buffer-size: 512;
 }
@@ -132,20 +132,11 @@ Map{
 }
 
 /* Buildings */
-/* Transparent buildings account for situations where routes go
-   in or under them */
-.building[zoom>11][zoom<17]{
-  polygon-fill:@building;
-  [zoom=12]{ polygon-opacity:0.2; }
-  [zoom=13]{ polygon-opacity:0.3; }
-  [zoom>13]{
-    polygon-opacity:0.4;
-    line-color:darken(@building,5);
-    line-width:0.2;
-  }
-}
-.building[zoom>=17]{
-  building-fill:lighten(@building,4);
-  building-fill-opacity: 0.8;
-  building-height:1.2;
+.building[zoom>13][zoom<17]{
+  polygon-fill: @building;
+  line-color:darken(@building,5);
+  line-width:0.2;
+  [zoom=14]{ polygon-opacity:0.1; }
+  [zoom=15]{ polygon-opacity:0.2; }
+  [zoom=16]{ polygon-opacity:0.4; }
 }
