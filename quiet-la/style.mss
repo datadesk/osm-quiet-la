@@ -1,7 +1,7 @@
 Map{
   background-color: @background;
   font-directory: url(./fonts); 
-  //buffer-size: 512;
+  buffer-size: 512;
 }
 
 /* Water */
