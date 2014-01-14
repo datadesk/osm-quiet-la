@@ -127,7 +127,7 @@ def build_tiles():
     """
     print('Building map tiles')
     # Have TileMill build the current project as an mbtiles file
-    local('%(tilemill)s export %(name)s ./%(release_name)s.mbtiles --format=mbtiles' % env)
+    local('%(tilemill)s export %(name)s ./%(release_name)s.mbtiles --format=mbtiles --metatile=15' % env)
     # Crack open the mbtiles file as a directory
     print('- Opening mbtiles file')
     local('mb-util ./%(release_name)s.mbtiles %(release_name)s' % env)
