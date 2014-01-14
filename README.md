@@ -9,7 +9,7 @@ A template for a muted base layer about Southern California. Designed for overla
 
 Read more about it in [this introductory post](http://datadesk.latimes.com/posts/2012/11/introducing-quiet-la/). Try the map on [this demonstration page](http://datadesk.github.io/osm-quiet-la/).
 
-![DTLA](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.3.0/dtla.png)
+![DTLA](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.4.0/dtla.png)
 
 ## Layers
 
@@ -83,7 +83,7 @@ $ osm2pgsql --slim --cache=500MB --drop -U postgres -H localhost -d osm_californ
 $ rm california.osm
 ```
 
-![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.3.0/sfvalley.png)
+![San Fernando Valley](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.4.0/sfvalley.png)
 
 ## Deployment
 
@@ -140,7 +140,7 @@ Now all that's left is to upload the files in bulk using [invar](https://github.
 $ fab deploy_tiles
 ```
 
-![Southern California](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.3.0/socal.png)
+![Southern California](https://raw.github.com/datadesk/osm-quiet-la/master/samples/0.4.0/socal.png)
 
 ## Credits
 
