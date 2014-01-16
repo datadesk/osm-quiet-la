@@ -144,4 +144,4 @@ $ fab deploy_tiles
 
 ## Credits
 
-This application was created by Ben Welsh and Ken Schwencke at the [Los Angeles Times Data Desk](datadesk.latimes.com). The cosmetic design was inspired by [this 2008 map](http://projects.latimes.com/elections/orange-county-prop-8-results-by-city/) by Thomas Suh Lauder. The technical design borrows heavily from MapBox's [osm-bright](https://github.com/mapbox/osm-bright).
+This application was created by Ben Welsh, Ken Schwencke and Len De Groot at the [Los Angeles Times Data Desk](datadesk.latimes.com). The cosmetic design was inspired by [this 2008 map](http://projects.latimes.com/elections/orange-county-prop-8-results-by-city/) by Thomas Suh Lauder. The technical design borrows heavily from MapBox's [osm-bright](https://github.com/mapbox/osm-bright).
