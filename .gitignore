@@ -1,5 +1,8 @@
+static/
 quiet-la/fonts/*
 quiet-la/project.mml
 *.pyc
 *.osm.bz2
 settings_private.py
+demo.py
+templates/

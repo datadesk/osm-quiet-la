@@ -13,7 +13,7 @@ def get_version():
     return json.load(f)['version']
 
 
-env.tilemill = 'nodejs $TILEMILL/index.js'
+env.tilemill = 'nodejs /usr/share/tilemill/index.js'
 env.name = 'quiet-la'
 env.version = get_version()
 env.release_name = '%s-%s' % (env.name, env.version)
@@ -127,7 +127,7 @@ def build_tiles():
     """
     print('Building map tiles')
     # Have TileMill build the current project as an mbtiles file
-    local('%(tilemill)s export %(name)s ./%(release_name)s.mbtiles --format=mbtiles --metatile=15' % env)
+    local('%(tilemill)s export %(name)s ./%(release_name)s.mbtiles --format=mbtiles --minzoom=8 --maxzoom=16 --metatile=15' % env)
     # Crack open the mbtiles file as a directory
     print('- Opening mbtiles file')
     local('mb-util ./%(release_name)s.mbtiles %(release_name)s' % env)

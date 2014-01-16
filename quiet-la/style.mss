@@ -20,7 +20,7 @@ Map{
 
 #water-lines-medium[zoom>=13][zoom<=14]{
   line-color: @water;
-  [type='river'],
+  [type='river'], 
   [type='canal'] {
     line-cap: round;
     line-join: round;
@@ -30,7 +30,7 @@ Map{
   [type='stream'] { 
     [zoom=13]{ line-width: 0.2; }
     [zoom=14]{ line-width: 0.4; }
-  }
+  } 
 } 
   
 #water-lines-high[zoom>=15]{
