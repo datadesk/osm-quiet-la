@@ -2,7 +2,7 @@ Fabric==1.4.3
 Flask==0.10.1
 Jinja2==2.7.1
 MarkupSafe==0.18
-Werkzeug==0.9.4
+Werkzeug==0.15.3
 argparse==1.2.1
 boto==2.5.2
 eventlet==0.9.17
